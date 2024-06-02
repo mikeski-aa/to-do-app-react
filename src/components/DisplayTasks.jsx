@@ -3,7 +3,7 @@
 
 function DisplayTasks(props) {
   return (
-    <div className={`task ${props.taskId}`}>
+    <div className="task">
       <div className="taskInfo">
         <div className="displayTaskName">{props.taskName}</div>
         <div className="displayTaskDesc">{props.taskDesc}</div>
