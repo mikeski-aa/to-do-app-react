@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { TaskContext } from "../App";
 
 // this function will be responsible for creating a new task
 // creating a new task means assigning a new task name, decription type of list, due date
 // i was going to use context API initially to avoid prop drilling
+// unique task ID needs to be generated when this modal is OPENED!
 
 // on change handlers for every input. Seperated into individual functions to follows Single Responsibility Principle
-// tempTask, setTempTask <- names of original tempState state
-
+// TaskContext.Provider value={{ tempTask, setTempTask, currentTasks, setCurrentTasks addNewTask, setNewTask,}}
 function handleNewInputName(e, state) {
   state.setTempTask({ ...state.tempTask, taskName: e.target.value });
   console.log(state.tempTask);
@@ -28,8 +28,32 @@ function handleDropdownChange(e, state) {
   console.log(state.tempTask);
 }
 
+// submit will add the new task to the currentTasks state, it will also reset temp state.
+// additionally, the newTask open state is set to close, to hide the form
+
+function handleSaveClick(state) {
+  let tempTask = state.tempTask;
+  console.log(state.currentTasks);
+  state.setCurrentTasks([...state.currentTasks, tempTask]);
+  state.setTempTask({
+    taskId: "",
+    taskName: "",
+    taskDesc: "",
+    taskDate: "",
+    taskPrio: "",
+  });
+  console.log(state.currentTasks);
+  state.setNewTask(false);
+}
+
+// function takes care of creating a new task
+// cancel will clear the tempState and close the modal
 function CreateNewTask() {
-  const tempState = useContext(TaskContext);
+  const taskContext = useContext(TaskContext);
+
+  if (taskContext.addNewTask === false) {
+    return null;
+  }
 
   return (
     <div className="createNewTask">
@@ -38,7 +62,7 @@ function CreateNewTask() {
         <input
           type="text"
           className="nameInput"
-          onChange={(e) => handleNewInputName(e, tempState)}
+          onChange={(e) => handleNewInputName(e, taskContext)}
         />
       </div>
 
@@ -46,7 +70,7 @@ function CreateNewTask() {
         <label>Task Description</label>
         <textarea
           className="detailsInput"
-          onChange={(e) => handleNewInputDesc(e, tempState)}
+          onChange={(e) => handleNewInputDesc(e, taskContext)}
         />
       </div>
 
@@ -55,7 +79,7 @@ function CreateNewTask() {
         <input
           type="date"
           className="dateInput"
-          onChange={(e) => handleNewInputDate(e, tempState)}
+          onChange={(e) => handleNewInputDate(e, taskContext)}
         />
       </div>
 
@@ -63,8 +87,7 @@ function CreateNewTask() {
         <label>Task Prio</label>
         <select
           className="prioInput"
-          // value={select}
-          onChange={(e) => handleDropdownChange(e, tempState)}
+          onChange={(e) => handleDropdownChange(e, taskContext)}
         >
           <option value="0">-- Choose Priority --</option>
           <option value="1">Low</option>
@@ -74,7 +97,12 @@ function CreateNewTask() {
       </div>
 
       <div className="newTaskButtons">
-        <button className="saveNewTask">Save task</button>
+        <button
+          className="saveNewTask"
+          onClick={() => handleSaveClick(taskContext)}
+        >
+          Save task
+        </button>
         <button className="cancelNewTask">Cancel</button>
       </div>
     </div>

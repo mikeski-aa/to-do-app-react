@@ -8,17 +8,30 @@ export const TaskContext = createContext();
 
 function App() {
   const [tempTask, setTempTask] = useState({
+    taskId: "",
     taskName: "",
     taskDesc: "",
     taskDate: "",
     taskPrio: "",
   });
   const [currentTasks, setCurrentTasks] = useState([]);
+  const [addNewTask, setNewTask] = useState(false);
   return (
     <>
       <h1>To do app</h1>
-      <ToDoItems />
-      <TaskContext.Provider value={{ tempTask, setTempTask }}>
+      <TaskContext.Provider
+        value={{
+          addNewTask,
+          setNewTask,
+          tempTask,
+          setTempTask,
+          currentTasks,
+          setCurrentTasks,
+          addNewTask,
+          setNewTask,
+        }}
+      >
+        <ToDoItems />
         <CreateNewTask />
       </TaskContext.Provider>
     </>
