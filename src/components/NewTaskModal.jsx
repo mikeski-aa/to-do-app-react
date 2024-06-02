@@ -10,27 +10,25 @@ import { TaskContext } from "../App";
 
 function handleNewInputName(e, state) {
   state.setTempTask({ ...state.tempTask, taskName: e.target.value });
-  console.log(e.target.value);
   console.log(state.tempTask);
 }
 
 function handleNewInputDesc(e, state) {
-  console.log(e.target.className);
-  console.log(state.tempTask);
+  state.setTempTask({ ...state.tempTask, taskDesc: e.target.value });
 }
 
 function handleNewInputDate(e, state) {
-  console.log(e.target.className);
+  let tempDate = e.target.value.split("-");
+  let euDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0];
+  state.setTempTask({ ...state.tempTask, taskDate: euDate });
+}
+
+function handleDropdownChange(e, state) {
+  state.setTempTask({ ...state.tempTask, taskPrio: e.target.value });
   console.log(state.tempTask);
 }
 
-function handleDropdownChange(e, setDropdown) {
-  console.log(e.target.value);
-  setDropdown(e.target.value);
-}
-
 function CreateNewTask() {
-  const [select, setSelect] = useState("");
   const tempState = useContext(TaskContext);
 
   return (
@@ -65,8 +63,8 @@ function CreateNewTask() {
         <label>Task Prio</label>
         <select
           className="prioInput"
-          value={select}
-          onChange={(e) => handleDropdownChange(e, setSelect, tempState)}
+          // value={select}
+          onChange={(e) => handleDropdownChange(e, tempState)}
         >
           <option value="0">-- Choose Priority --</option>
           <option value="1">Low</option>
