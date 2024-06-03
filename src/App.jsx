@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ToDoItems } from "./components/ToDoDetails";
 import { CreateNewTask } from "./components/NewTaskModal";
 import { createContext, useContext } from "react";
+import { EditTask } from "./components/EditTask";
 import "./App.css";
 
 export const TaskContext = createContext();
@@ -34,6 +35,7 @@ function App() {
       >
         <ToDoItems />
         <CreateNewTask />
+        <EditTask />
       </TaskContext.Provider>
     </>
   );
