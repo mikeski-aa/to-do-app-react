@@ -3,21 +3,47 @@ import { TaskContext } from "../App";
 
 // function to handle edits
 
-function handleEditName() {}
+function handleEditName(e, taskContext) {
+  taskContext.setTempTask((prevTask) => ({
+    ...prevTask,
+    taskName: e.target.value,
+  }));
+}
 
-function handleEditDesc() {}
+function handleEditDesc(e, taskContext) {
+  taskContext.setTempTask((prevTask) => ({
+    ...prevTask,
+    taskDesc: e.target.value,
+  }));
+}
 
-function handleEditDate() {}
+function handleEditDate(e, taskContext) {
+  taskContext.setTempTask((prevTask) => ({
+    ...prevTask,
+    taskDate: e.target.value,
+  }));
+}
 
-function handleEditDropdown() {}
+function handleEditDropdown(e, taskContext) {
+  taskContext.setTempTask((prevTask) => ({
+    ...prevTask,
+    taskPrio: e.target.value,
+  }));
+}
 
-// function to assign
+// function for handling cancel click + resetting temp
+function handleCancelClick(taskContext) {
+  taskContext.setEditTask(false);
+  taskContext.setTempTask({
+    taskId: "",
+    taskName: "",
+    taskDesc: "",
+    taskDate: "",
+    taskPrio: "",
+  });
+}
 
 // this function will be responsible for opening a window where you can edit your task details.
-// taskId: "",
-// taskName: "",
-// taskDesc: "",
-// taskPrio: "",
 
 function EditTask() {
   const taskContext = useContext(TaskContext);
@@ -78,7 +104,12 @@ function EditTask() {
         >
           Save task
         </button>
-        <button className="cancelNewTask">Cancel</button>
+        <button
+          className="cancelNewTask"
+          onClick={() => handleCancelClick(taskContext)}
+        >
+          Cancel
+        </button>
       </div>
     </div>
   );

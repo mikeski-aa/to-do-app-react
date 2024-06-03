@@ -16,10 +16,12 @@ function handleNewInputDesc(e, state) {
   state.setTempTask({ ...state.tempTask, taskDesc: e.target.value });
 }
 
+// date conversion here is pointless, as you will have to convert it back when editing.
+// what I need to do instead is carry out the date conversion when date is display, with the option to toggle EU or US date format via a toggle w/ a state
 function handleNewInputDate(e, state) {
-  let tempDate = e.target.value.split("-");
-  let euDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0];
-  state.setTempTask({ ...state.tempTask, taskDate: euDate });
+  // let tempDate = e.target.value.split("-");
+  // let euDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0];
+  state.setTempTask({ ...state.tempTask, taskDate: e.target.value });
 }
 
 function handleDropdownChange(e, state) {
