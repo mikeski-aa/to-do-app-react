@@ -11,24 +11,25 @@ function App() {
     taskId: "",
     taskName: "",
     taskDesc: "",
-    taskDate: "",
     taskPrio: "",
   });
   const [currentTasks, setCurrentTasks] = useState([]);
   const [addNewTask, setNewTask] = useState(false);
+  const [editTask, setEditTask] = useState(false);
+
   return (
     <>
       <h1>To do app</h1>
       <TaskContext.Provider
         value={{
-          addNewTask,
-          setNewTask,
           tempTask,
           setTempTask,
           currentTasks,
           setCurrentTasks,
           addNewTask,
           setNewTask,
+          editTask,
+          setEditTask,
         }}
       >
         <ToDoItems />

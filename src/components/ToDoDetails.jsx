@@ -15,8 +15,6 @@ function newTaskHandler(state) {
 
 function ToDoItems() {
   const taskContext = useContext(TaskContext);
-  console.log("current task context");
-  console.log(taskContext.currentTasks);
   return (
     <div className="currentTasks">
       <button onClick={() => newTaskHandler(taskContext)}>New Task</button>
@@ -27,6 +25,7 @@ function ToDoItems() {
             taskDesc={task.taskDesc}
             taskDate={task.taskDate}
             taskPrio={task.taskPrio}
+            taskId={task.taskId}
             key={task.taskId}
           />
         ))}

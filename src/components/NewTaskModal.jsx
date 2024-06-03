@@ -10,7 +10,6 @@ import { TaskContext } from "../App";
 // TaskContext.Provider value={{ tempTask, setTempTask, currentTasks, setCurrentTasks addNewTask, setNewTask,}}
 function handleNewInputName(e, state) {
   state.setTempTask({ ...state.tempTask, taskName: e.target.value });
-  console.log(state.tempTask);
 }
 
 function handleNewInputDesc(e, state) {
@@ -25,7 +24,6 @@ function handleNewInputDate(e, state) {
 
 function handleDropdownChange(e, state) {
   state.setTempTask({ ...state.tempTask, taskPrio: e.target.value });
-  console.log(state.tempTask);
 }
 
 // submit will add the new task to the currentTasks state, it will also reset temp state.
