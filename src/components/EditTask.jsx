@@ -43,6 +43,35 @@ function handleCancelClick(taskContext) {
   });
 }
 
+// function to handle saving back to the current state
+function handleSaveClick(taskContext) {
+  let tempHolder = [...taskContext.currentTasks];
+
+  for (let x = 0; x < tempHolder.length; x++) {
+    if (tempHolder[x].taskId === taskContext.tempTask.taskId) {
+      tempHolder[x] = {
+        ...tempHolder[x],
+        taskName: taskContext.tempTask.taskName,
+        taskDesc: taskContext.tempTask.taskDesc,
+        taskDate: taskContext.tempTask.taskDate,
+        taskPrio: taskContext.tempTask.taskPrio,
+      };
+    }
+  }
+
+  console.log(tempHolder);
+  taskContext.setCurrentTasks(tempHolder);
+  // for resetting temp state and closing the window
+  taskContext.setEditTask(false);
+  taskContext.setTempTask({
+    taskId: "",
+    taskName: "",
+    taskDesc: "",
+    taskDate: "",
+    taskPrio: "",
+  });
+}
+
 // this function will be responsible for opening a window where you can edit your task details.
 
 function EditTask() {
