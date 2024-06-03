@@ -46,6 +46,18 @@ function handleSaveClick(state) {
   state.setNewTask(false);
 }
 
+// function for handling cancel click + resetting the temp holder
+function handleCancelClick(state) {
+  state.setTempTask({
+    taskId: "",
+    taskName: "",
+    taskDesc: "",
+    taskDate: "",
+    taskPrio: "",
+  });
+  state.setNewTask(false);
+}
+
 // function takes care of creating a new task
 // cancel will clear the tempState and close the modal
 function CreateNewTask() {
@@ -103,7 +115,12 @@ function CreateNewTask() {
         >
           Save task
         </button>
-        <button className="cancelNewTask">Cancel</button>
+        <button
+          className="cancelNewTask"
+          onClick={() => handleCancelClick(taskContext)}
+        >
+          Cancel
+        </button>
       </div>
     </div>
   );

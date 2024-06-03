@@ -3,7 +3,13 @@ import { TaskContext } from "../App";
 import { v4 as uuidv4 } from "uuid";
 import { DisplayTasks } from "./DisplayTasks";
 
+// responsible for opening a div for adding new state
+// this cannot open if edit task is already opened!
 function newTaskHandler(state) {
+  if (state.editTask === true) {
+    return alert("Finish editing your current task before adding a new one!");
+  }
+
   if (state.addNewTask === false) {
     state.setTempTask({ ...state.tempTask, taskId: uuidv4() });
     state.setNewTask(true);

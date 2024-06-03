@@ -2,19 +2,25 @@ import { useContext } from "react";
 import { TaskContext } from "../App";
 
 // function for handling deletion of an individual card
-function handleDeleteEvent(taskId, currentState, setCurrState) {
-  console.log(taskId);
-  let tempState = [...currentState];
+function handleDeleteEvent(taskId, taskContext) {
+  let tempState = [...taskContext.currentTasks];
   let newStateArray = tempState.filter((x) => x.taskId !== taskId);
-  setCurrState(newStateArray);
+  taskContext.setCurrentTasks(newStateArray);
 }
 
 // function for handling editing of individual card
 // this task needs to assign several states -> first state to display the edit card div
 // second state to store the edit card ID
-function handleEditEvent(setEditTask, taskId, currentTasks, setTempTask) {
-  setEditTask(true);
-  setTempTask(getTempTask(taskId, currentTasks));
+// if
+function handleEditEvent(taskId, taskContext) {
+  if (taskContext.addNewTask === true) {
+    return alert(
+      "Finish adding a new task or cancel it before editing an existing task"
+    );
+  }
+
+  taskContext.setEditTask(true);
+  taskContext.setTempTask(getTempTask(taskId, taskContext.currentTasks));
 }
 
 // function to filter existing tasks, extracting the sought after task and setting it to temp state
@@ -41,27 +47,10 @@ function DisplayTasks(props) {
         <div className="displayTaskPrio">{props.taskPrio}</div>
       </div>
       <div className="buttons">
-        <button
-          onClick={() =>
-            handleEditEvent(
-              taskContext.setEditTask,
-              props.taskId,
-              taskContext.currentTasks,
-              taskContext.setTempTask
-            )
-          }
-        >
+        <button onClick={() => handleEditEvent(props.taskId, taskContext)}>
           Edit
         </button>
-        <button
-          onClick={() =>
-            handleDeleteEvent(
-              props.taskId,
-              taskContext.currentTasks,
-              taskContext.setCurrentTasks
-            )
-          }
-        >
+        <button onClick={() => handleDeleteEvent(props.taskId, taskContext)}>
           Delete
         </button>
       </div>

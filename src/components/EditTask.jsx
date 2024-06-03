@@ -47,6 +47,8 @@ function handleCancelClick(taskContext) {
 function handleSaveClick(taskContext) {
   let tempHolder = [...taskContext.currentTasks];
 
+  // assigns new values to shallow copy of currentTasks
+
   for (let x = 0; x < tempHolder.length; x++) {
     if (tempHolder[x].taskId === taskContext.tempTask.taskId) {
       tempHolder[x] = {
@@ -58,8 +60,6 @@ function handleSaveClick(taskContext) {
       };
     }
   }
-
-  console.log(tempHolder);
   taskContext.setCurrentTasks(tempHolder);
   // for resetting temp state and closing the window
   taskContext.setEditTask(false);
