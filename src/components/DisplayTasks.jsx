@@ -12,19 +12,19 @@ function handleDeleteEvent(taskId, currentState, setCurrState) {
 // function for handling editing of individual card
 // this task needs to assign several states -> first state to display the edit card div
 // second state to store the edit card ID
-function handleEditEvent(setEditTask, taskId, currentTasks) {
+function handleEditEvent(setEditTask, taskId, currentTasks, setTempTask) {
   setEditTask(true);
-  setTempTask(taskId, currentTasks);
+  setTempTask(getTempTask(taskId, currentTasks));
 }
 
 // function to filter existing tasks, extracting the sought after task and setting it to temp state
-function setTempTask(inputId, currentTasks) {
+function getTempTask(inputId, currentTasks) {
   let tempHolder = [...currentTasks];
   let tempItem = tempHolder.filter((item) => item.taskId === inputId);
 
   console.log(tempItem);
 
-  return tempItem;
+  return tempItem[0];
 }
 
 // this displays a new task card
@@ -46,7 +46,8 @@ function DisplayTasks(props) {
             handleEditEvent(
               taskContext.setEditTask,
               props.taskId,
-              taskContext.currentTasks
+              taskContext.currentTasks,
+              taskContext.setTempTask
             )
           }
         >

@@ -11,9 +11,15 @@ function handleEditDate() {}
 
 function handleEditDropdown() {}
 
-// this function will be responsible for opening a window where you can edit your task details.
+// function to assign
 
-function EditTask(props) {
+// this function will be responsible for opening a window where you can edit your task details.
+// taskId: "",
+// taskName: "",
+// taskDesc: "",
+// taskPrio: "",
+
+function EditTask() {
   const taskContext = useContext(TaskContext);
 
   if (taskContext.editTask === false) {
@@ -27,7 +33,7 @@ function EditTask(props) {
         <input
           type="text"
           className="nameInput"
-          value={props.taskName}
+          value={taskContext.tempTask.taskName}
           onChange={(e) => handleEditName(e, taskContext)}
         />
       </div>
@@ -36,7 +42,7 @@ function EditTask(props) {
         <label>Task Description</label>
         <textarea
           className="detailsInput"
-          value={props.taskDesc}
+          value={taskContext.tempTask.taskDesc}
           onChange={(e) => handleEditDesc(e, taskContext)}
         />
       </div>
@@ -46,7 +52,7 @@ function EditTask(props) {
         <input
           type="date"
           className="dateInput"
-          value={props.taskDate}
+          value={taskContext.tempTask.taskDate}
           onChange={(e) => handleEditDate(e, taskContext)}
         />
       </div>
@@ -56,7 +62,7 @@ function EditTask(props) {
         <select
           className="prioInput"
           onChange={(e) => handleEditDropdown(e, taskContext)}
-          value={props.taskPrio}
+          value={taskContext.tempTask.taskPrio}
         >
           <option value="0">-- Choose Priority --</option>
           <option value="1">Low</option>

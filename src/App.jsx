@@ -12,6 +12,7 @@ function App() {
     taskId: "",
     taskName: "",
     taskDesc: "",
+    taskDate: "",
     taskPrio: "",
   });
   const [currentTasks, setCurrentTasks] = useState([]);
