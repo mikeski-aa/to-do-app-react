@@ -1,10 +1,26 @@
+import { useContext } from "react";
 import { TaskContext } from "../App";
+import { ListButton } from "./ListButton";
+import { v4 as uuidv4 } from "uuid";
 
 // navigation bar
 // here, we want to give user the option to select which task folder they would like to see
 // perhaps add other functionality like see today's tasks, or upcoming tasks?
 
+//           tempTask,
+// setTempTask,
+// currentTasks,
+// setCurrentTasks,
+// addNewTask,
+// setNewTask,
+// editTask,
+// setEditTask,
+// currentList,
+// setCurrentList,
+
 function Nav() {
+  const taskContext = useContext(TaskContext);
+
   return (
     <div className="navBar">
       <div className="header">
@@ -20,7 +36,11 @@ function Nav() {
       </div>
 
       <div className="lists">
-        <div className="currentLists"></div>
+        <div className="currentLists">
+          {taskContext.currentList.map((item) => (
+            <ListButton listName={item.listName} key={uuidv4()} />
+          ))}
+        </div>
         <button>Add New List</button>
       </div>
 
