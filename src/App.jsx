@@ -28,6 +28,24 @@ function App() {
       taskCompleted: true,
       taskBelongTo: "jhasd7861j",
     },
+    {
+      taskId: "153513535",
+      taskName: "Placeholder Name",
+      taskDesc: "Placeholder Desc",
+      taskDate: "2024-01-01",
+      taskPrio: "3",
+      taskCompleted: true,
+      taskBelongTo: "jhasd7861j",
+    },
+    {
+      taskId: "153513554",
+      taskName: "Placeholder Name",
+      taskDesc: "Placeholder Desc",
+      taskDate: "2024-01-01",
+      taskPrio: "3",
+      taskCompleted: true,
+      taskBelongTo: "jhasd7861j",
+    },
   ]);
   const [addNewTask, setNewTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
@@ -44,6 +62,10 @@ function App() {
   const [tempListName, setTempListName] = useState({
     listName: "",
     listId: "",
+  });
+  const [activeList, setActiveList] = useState({
+    activeName: "Placeholder List",
+    activeId: "jhasd7861j",
   });
 
   return (
@@ -65,6 +87,8 @@ function App() {
           setShowNewList,
           tempListName,
           setTempListName,
+          activeList,
+          setActiveList,
         }}
       >
         <div className="mainStuff">

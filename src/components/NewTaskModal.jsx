@@ -30,6 +30,7 @@ function handleDropdownPrioChange(e, state) {
 
 function handleDropdownListChange(e, state) {
   state.setTempTask({ ...state.tempTask, taskBelongTo: e.target.value });
+  console.log(state.tempTask);
 }
 
 // submit will add the new task to the currentTasks state, it will also reset temp state.
@@ -59,6 +60,7 @@ function handleCancelClick(state) {
     taskDesc: "",
     taskDate: "",
     taskPrio: "",
+    taskBelongTo: "",
   });
   state.setNewTask(false);
 }

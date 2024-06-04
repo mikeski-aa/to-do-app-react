@@ -17,15 +17,22 @@ function newTaskHandler(state) {
 }
 
 // this function will render the main part of the application, which lets you add a new To-Do item to the list
-// provided values: value={{ addNewTask, setNewTask, tempTask, setTempTask }}
+// this should only display the items from currently selected list.
+// need to filter results to display correct ones.
 
 function ToDoItems() {
   const taskContext = useContext(TaskContext);
+
+  let tempListArray = taskContext.currentTasks.filter(
+    (task) => task.taskBelongTo !== taskContext.activeList.activeId
+  );
+
   return (
     <div className="currentTasks">
+      <h1>{taskContext.activeList.activeName}</h1>
       <button onClick={() => newTaskHandler(taskContext)}>New Task</button>
       <div className="displayTask">
-        {taskContext.currentTasks.map((task) => (
+        {tempListArray.map((task) => (
           <DisplayTasks
             taskName={task.taskName}
             taskDesc={task.taskDesc}
