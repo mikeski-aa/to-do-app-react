@@ -49,6 +49,8 @@ function App() {
           setNewTask,
           editTask,
           setEditTask,
+          currentList,
+          setCurrentList,
         }}
       >
         <div className="mainStuff">
