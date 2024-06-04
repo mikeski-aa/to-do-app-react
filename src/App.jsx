@@ -23,7 +23,7 @@ function App() {
     taskDate: "",
     taskPrio: "1",
     taskCompleted: false,
-    taskBelongTo: currentList.listId,
+    taskBelongTo: currentList[0].listId,
   });
   const [currentTasks, setCurrentTasks] = useState([
     {

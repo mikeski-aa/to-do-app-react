@@ -20,6 +20,8 @@ function handleEditEvent(taskId, taskContext) {
   }
 
   taskContext.setEditTask(true);
+  console.log("watch if correct belong to assigned");
+  console.log(getTempTask(taskId, taskContext.currentTasks));
   taskContext.setTempTask(getTempTask(taskId, taskContext.currentTasks));
 }
 

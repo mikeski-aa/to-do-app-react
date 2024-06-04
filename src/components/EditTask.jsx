@@ -48,6 +48,7 @@ function handleCancelClick(taskContext) {
     taskDesc: "",
     taskDate: "",
     taskPrio: "",
+    taskBelongTo: "",
   });
 }
 
@@ -65,6 +66,7 @@ function handleSaveClick(taskContext) {
         taskDesc: taskContext.tempTask.taskDesc,
         taskDate: taskContext.tempTask.taskDate,
         taskPrio: taskContext.tempTask.taskPrio,
+        taskBelongTo: taskContext.tempTask.taskBelongTo,
       };
     }
   }
@@ -77,6 +79,7 @@ function handleSaveClick(taskContext) {
     taskDesc: "",
     taskDate: "",
     taskPrio: "",
+    taskBelongTo: "",
   });
 }
 
@@ -139,6 +142,7 @@ function EditTask() {
         <select
           className="listInput"
           onChange={(e) => handleListDropdown(e, taskContext)}
+          value={taskContext.tempTask.taskBelongTo}
         >
           {taskContext.currentList.map((item) => (
             <option value={item.listName} key={item.listId}>

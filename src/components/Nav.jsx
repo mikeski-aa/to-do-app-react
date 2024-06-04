@@ -27,6 +27,7 @@ function Nav() {
   const taskContext = useContext(TaskContext);
 
   const handleOpenNewList = () => {
+    console.log(taskContext.currentTasks);
     taskContext.setTempListName({
       ...taskContext.tempListName,
       listId: uuidv4(),

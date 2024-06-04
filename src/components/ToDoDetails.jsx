@@ -24,7 +24,7 @@ function ToDoItems() {
   const taskContext = useContext(TaskContext);
 
   let tempListArray = taskContext.currentTasks.filter(
-    (task) => task.taskBelongTo !== taskContext.activeList.activeId
+    (task) => task.taskBelongTo == taskContext.activeList.activeId
   );
 
   return (
