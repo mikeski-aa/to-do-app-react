@@ -38,6 +38,7 @@ function DisplayTasks(props) {
   const taskContext = useContext(TaskContext);
 
   // handler for clicking of the box
+  // I am keeping this handler within the function for now, however, I am unsure if I should take it out or bring others in
   const handleCompleteClick = () => {
     let tempArray = [...taskContext.currentTasks];
 
@@ -56,13 +57,13 @@ function DisplayTasks(props) {
   return (
     <div className="task">
       <div className="taskInfo">
+        <div className="displayTaskName">{props.taskName}</div>
         <input
           type="checkbox"
           className="displayTaskCompleted"
           defaultChecked={props.taskCompleted}
           onChange={handleCompleteClick}
         ></input>
-        <div className="displayTaskName">{props.taskName}</div>
         <div className="displayTaskDesc">{props.taskDesc}</div>
         <div className="displayTaskDue">{props.taskDate}</div>
         <div className="displayTaskPrio">{props.taskPrio}</div>

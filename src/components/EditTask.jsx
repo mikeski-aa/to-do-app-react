@@ -31,6 +31,13 @@ function handleEditDropdown(e, taskContext) {
   }));
 }
 
+function handleListDropdown(e, taskContext) {
+  taskContext.setTempTask((prevTask) => ({
+    ...prevTask,
+    taskBelongTo: e.target.value,
+  }));
+}
+
 // function for handling cancel click + resetting temp
 function handleCancelClick(taskContext) {
   taskContext.setEditTask(false);
@@ -123,6 +130,20 @@ function EditTask() {
           <option value="1">Low</option>
           <option value="2">Medium</option>
           <option value="3">High</option>
+        </select>
+      </div>
+
+      <div className="taskList">
+        <label>Task list</label>
+        <select
+          className="listInput"
+          onChange={(e) => handleListDropdown(e, taskContext)}
+        >
+          {taskContext.currentList.map((item) => (
+            <option value={item.listName} key={item.listKey}>
+              {item.listName}
+            </option>
+          ))}
         </select>
       </div>
 

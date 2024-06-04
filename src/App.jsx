@@ -16,15 +16,17 @@ function App() {
     taskDate: "",
     taskPrio: "",
     taskCompleted: false,
+    taskBelongTo: "",
   });
   const [currentTasks, setCurrentTasks] = useState([
     {
       taskId: "15351355",
       taskName: "Placeholder Name",
       taskDesc: "Placeholder Desc",
-      taskDate: "01-01-2024",
+      taskDate: "2024-01-01",
       taskPrio: "3",
       taskCompleted: true,
+      taskBelongTo: "jhasd7861j",
     },
   ]);
   const [addNewTask, setNewTask] = useState(false);
@@ -34,7 +36,6 @@ function App() {
     {
       listKey: "jhasd7861j",
       listName: "Placeholder List",
-      listItems: currentTasks,
     },
   ]);
 

@@ -24,8 +24,12 @@ function handleNewInputDate(e, state) {
   state.setTempTask({ ...state.tempTask, taskDate: e.target.value });
 }
 
-function handleDropdownChange(e, state) {
+function handleDropdownPrioChange(e, state) {
   state.setTempTask({ ...state.tempTask, taskPrio: e.target.value });
+}
+
+function handleDropdownListChange(e, state) {
+  state.setTempTask({ ...state.tempTask, taskBelongTo: e.target.value });
 }
 
 // submit will add the new task to the currentTasks state, it will also reset temp state.
@@ -41,6 +45,7 @@ function handleSaveClick(state) {
     taskDesc: "",
     taskDate: "",
     taskPrio: "",
+    taskBelongTo: "",
   });
   console.log(state.currentTasks);
   state.setNewTask(false);
@@ -99,12 +104,25 @@ function CreateNewTask() {
         <label>Task Prio</label>
         <select
           className="prioInput"
-          onChange={(e) => handleDropdownChange(e, taskContext)}
+          onChange={(e) => handleDropdownPrioChange(e, taskContext)}
         >
-          <option value="0">-- Choose Priority --</option>
           <option value="1">Low</option>
           <option value="2">Medium</option>
           <option value="3">High</option>
+        </select>
+      </div>
+
+      <div className="taskList">
+        <label>Task list</label>
+        <select
+          className="listInput"
+          onChange={(e) => handleDropdownListChange(e, taskContext)}
+        >
+          {taskContext.currentList.map((item) => (
+            <option value={item.listName} key={item.listKey}>
+              {item.listName}
+            </option>
+          ))}
         </select>
       </div>
 
