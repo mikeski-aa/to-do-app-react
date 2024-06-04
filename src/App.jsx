@@ -10,12 +10,16 @@ export const TaskContext = createContext();
 
 function App() {
   // placeholder list to show on startup and for testing
+  // this is where all of the lists live with their associated IDs
   const [currentList, setCurrentList] = useState([
     {
       listName: "Placeholder List",
       listId: "jhasd7861j",
     },
   ]);
+
+  // temp task state - used as temp holder for state edits.
+  // default values assigned for taskPrio, taskCompleted and taskBelongTo to prevent undefined assignment upon submission
   const [tempTask, setTempTask] = useState({
     taskId: "",
     taskName: "",
@@ -25,6 +29,9 @@ function App() {
     taskCompleted: false,
     taskBelongTo: currentList[0].listId,
   });
+
+  // this is where all the tasks live - one large state.
+  // is this the best solution? IDK.
   const [currentTasks, setCurrentTasks] = useState([
     {
       taskId: "15351355",
@@ -54,17 +61,23 @@ function App() {
       taskBelongTo: "jhasd7861j",
     },
   ]);
+  // state to control visibility of add new task section
   const [addNewTask, setNewTask] = useState(false);
+  // state to control visibility of edit task section
   const [editTask, setEditTask] = useState(false);
-
+  // state to control visibility of adding new list item box
   const [showAddNewList, setShowNewList] = useState(false);
+  // temp list item for creating and generating a key for a new list item
   const [tempListName, setTempListName] = useState({
     listName: "",
     listId: "",
   });
+  // state for controlling the currently active list -> i.e the list that will be displayed first.
+  // set to a default value of the placeholder items, pointing at the first element of the list array
+  // this ensures on startup, this field will be displaying SOMETHING.
   const [activeList, setActiveList] = useState({
-    activeName: "Placeholder List",
-    activeId: "jhasd7861j",
+    activeName: currentList[0].listName,
+    activeId: currentList[0].listId,
   });
 
   return (
