@@ -29,8 +29,12 @@ function handleDropdownPrioChange(e, state) {
 }
 
 function handleDropdownListChange(e, state) {
-  state.setTempTask({ ...state.tempTask, taskBelongTo: e.target.value });
+  let tempId = state.currentList.filter(
+    (item) => item.listName === e.target.value
+  )[0].listId;
+  state.setTempTask({ ...state.tempTask, taskBelongTo: tempId });
   console.log(state.tempTask);
+  console.log(state.currentList);
 }
 
 // submit will add the new task to the currentTasks state, it will also reset temp state.
@@ -38,7 +42,7 @@ function handleDropdownListChange(e, state) {
 
 function handleSaveClick(state) {
   let tempTask = state.tempTask;
-  console.log(state.currentTasks);
+  console.log(tempTask);
   state.setCurrentTasks([...state.currentTasks, tempTask]);
   state.setTempTask({
     taskId: "",

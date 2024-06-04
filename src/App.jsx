@@ -53,8 +53,8 @@ function App() {
   // placeholder list to show on startup and for testing
   const [currentList, setCurrentList] = useState([
     {
-      listId: "jhasd7861j",
       listName: "Placeholder List",
+      listId: "jhasd7861j",
     },
   ]);
 
