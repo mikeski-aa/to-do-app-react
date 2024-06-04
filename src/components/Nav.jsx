@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 // here, we want to give user the option to select which task folder they would like to see
 // perhaps add other functionality like see today's tasks, or upcoming tasks?
 
-//           tempTask,
+// tempTask,
 // setTempTask,
 // currentTasks,
 // setCurrentTasks,
@@ -17,9 +17,20 @@ import { v4 as uuidv4 } from "uuid";
 // setEditTask,
 // currentList,
 // setCurrentList,
+// showAddNewList,
+// setShowNewList,
+// tempListName,
+// setTempListName,
 
 function Nav() {
   const taskContext = useContext(TaskContext);
+
+  const handleOpenNewList = () => {
+    taskContext.setTempListName({
+      ...taskContext.setTempListName,
+      tempListId: uuidv4(),
+    });
+  };
 
   return (
     <div className="navBar">
@@ -38,10 +49,10 @@ function Nav() {
       <div className="lists">
         <div className="currentLists">
           {taskContext.currentList.map((item) => (
-            <ListButton listName={item.listName} key={uuidv4()} />
+            <ListButton listName={item.listName} key={item.listKey} />
           ))}
         </div>
-        <button>Add New List</button>
+        <button onClick={handleOpenNewList}>Add New List</button>
       </div>
 
       <div className="about">

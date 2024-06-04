@@ -31,13 +31,20 @@ function App() {
   ]);
   const [addNewTask, setNewTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
+
   // placeholder list to show on startup and for testing
   const [currentList, setCurrentList] = useState([
     {
-      listKey: "jhasd7861j",
+      listId: "jhasd7861j",
       listName: "Placeholder List",
     },
   ]);
+
+  const [showAddNewList, setShowNewList] = useState(false);
+  const [tempListName, setTempListName] = useState({
+    tempListName: "",
+    tempListId: "",
+  });
 
   return (
     <>
@@ -54,6 +61,10 @@ function App() {
           setEditTask,
           currentList,
           setCurrentList,
+          showAddNewList,
+          setShowNewList,
+          tempListName,
+          setTempListName,
         }}
       >
         <div className="mainStuff">
