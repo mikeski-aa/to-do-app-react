@@ -15,6 +15,7 @@ function App() {
     taskDesc: "",
     taskDate: "",
     taskPrio: "",
+    taskCompleted: false,
   });
   const [currentTasks, setCurrentTasks] = useState([
     {
@@ -23,6 +24,7 @@ function App() {
       taskDesc: "Placeholder Desc",
       taskDate: "01-01-2024",
       taskPrio: "3",
+      taskCompleted: true,
     },
   ]);
   const [addNewTask, setNewTask] = useState(false);

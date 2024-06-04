@@ -32,6 +32,7 @@ function ToDoItems() {
             taskDate={task.taskDate}
             taskPrio={task.taskPrio}
             taskId={task.taskId}
+            taskCompleted={task.taskCompleted}
             key={task.taskId}
           />
         ))}

@@ -28,8 +28,6 @@ function getTempTask(inputId, currentTasks) {
   let tempHolder = [...currentTasks];
   let tempItem = tempHolder.filter((item) => item.taskId === inputId);
 
-  console.log(tempItem);
-
   return tempItem[0];
 }
 
@@ -38,9 +36,32 @@ function getTempTask(inputId, currentTasks) {
 
 function DisplayTasks(props) {
   const taskContext = useContext(TaskContext);
+
+  // handler for clicking of the box
+  const handleCompleteClick = () => {
+    let tempArray = [...taskContext.currentTasks];
+
+    for (let x = 0; x < tempArray.length; x++) {
+      if (tempArray[x].taskId === props.taskId) {
+        tempArray[x] = {
+          ...tempArray[x],
+          taskCompleted: !tempArray[x].taskCompleted,
+        };
+      }
+    }
+
+    taskContext.setCurrentTasks(tempArray);
+  };
+
   return (
     <div className="task">
       <div className="taskInfo">
+        <input
+          type="checkbox"
+          className="displayTaskCompleted"
+          defaultChecked={props.taskCompleted}
+          onChange={handleCompleteClick}
+        ></input>
         <div className="displayTaskName">{props.taskName}</div>
         <div className="displayTaskDesc">{props.taskDesc}</div>
         <div className="displayTaskDue">{props.taskDate}</div>
