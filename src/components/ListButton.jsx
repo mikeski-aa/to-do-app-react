@@ -1,11 +1,18 @@
+import { useContext } from "react";
 import { TaskContext } from "../App";
 
 // this function is responsible for the list buttons appearing on the navigation bar
 // when a list item is clicked, all of the items associated with the given list will be rendered - filter method for this?
 
 function ListButton(props) {
+  const taskContext = useContext(TaskContext);
+
   const handleListClick = (e) => {
-    console.log(e.target);
+    console.log(props.listId);
+    taskContext.setActiveList({
+      activeName: props.listName,
+      activeId: props.listId,
+    });
   };
 
   const handleDeleteClick = () => {

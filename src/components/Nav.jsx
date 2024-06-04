@@ -53,7 +53,11 @@ function Nav() {
       <div className="lists">
         <div className="currentLists">
           {taskContext.currentList.map((item) => (
-            <ListButton listName={item.listName} key={item.listId} />
+            <ListButton
+              listName={item.listName}
+              key={item.listId}
+              listId={item.listId}
+            />
           ))}
         </div>
         <button onClick={handleOpenNewList}>Add New List</button>
