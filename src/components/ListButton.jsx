@@ -7,7 +7,7 @@ import { TaskContext } from "../App";
 function ListButton(props) {
   const taskContext = useContext(TaskContext);
 
-  const handleListClick = (e) => {
+  const handleListClick = () => {
     console.log(props.listId);
     taskContext.setActiveList({
       activeName: props.listName,
@@ -26,35 +26,35 @@ function ListButton(props) {
       (item) => item.listId !== props.listId
     );
 
-    preventLastListDeletion();
+    // preventLastListDeletion();
 
-    if (affectedTasks.length == 0) {
-      if (
-        confirm(`Are you sure you would like to pernamently delete this list?`)
-      ) {
-        taskContext.setCurrentList(purgedListArray);
-        taskContext.setActiveList({
-          activeName: taskContext.currentList[findNearestIndex()].listName,
-          activeId: taskContext.currentList[findNearestIndex()].listId,
-        });
-      }
-    } else {
-      if (
-        confirm(
-          `You currently have ${affectedTasks.length} tasks in this list. Are you sure you would like to delete them with the list?`
-        )
-      ) {
-        let purgedTaskArray = taskContext.currentTasks.filter(
-          (item) => item.taskBelongTo !== props.listId
-        );
-        taskContext.setCurrentTasks(purgedTaskArray);
-        taskContext.setCurrentList(purgedListArray);
-        taskContext.setActiveList({
-          activeName: taskContext.currentList[findNearestIndex()].listName,
-          activeId: taskContext.currentList[findNearestIndex()].listId,
-        });
-      }
-    }
+    // if (affectedTasks.length == 0) {
+    //   if (
+    //     confirm(`Are you sure you would like to pernamently delete this list?`)
+    //   ) {
+    //     taskContext.setCurrentList(purgedListArray);
+    //     taskContext.setActiveList({
+    //       activeName: taskContext.currentList[findNearestIndex()].listName,
+    //       activeId: taskContext.currentList[findNearestIndex()].listId,
+    //     });
+    //   }
+    // } else {
+    //   if (
+    //     confirm(
+    //       `You currently have ${affectedTasks.length} tasks in this list. Are you sure you would like to delete them with the list?`
+    //     )
+    //   ) {
+    //     let purgedTaskArray = taskContext.currentTasks.filter(
+    //       (item) => item.taskBelongTo !== props.listId
+    //     );
+    //     taskContext.setCurrentTasks(purgedTaskArray);
+    //     taskContext.setCurrentList(purgedListArray);
+    //     taskContext.setActiveList({
+    //       activeName: taskContext.currentList[findNearestIndex()].listName,
+    //       activeId: taskContext.currentList[findNearestIndex()].listId,
+    //     });
+    //   }
+    // }
   };
 
   // helper function to prevent deletion of last list item

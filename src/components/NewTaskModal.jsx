@@ -47,7 +47,7 @@ function handleSaveClick(state) {
     taskName: "",
     taskDesc: "",
     taskDate: "",
-    taskPrio: "",
+    taskPrio: "1",
     taskBelongTo: "",
   });
   console.log(state.currentTasks);
@@ -61,7 +61,7 @@ function handleCancelClick(state) {
     taskName: "",
     taskDesc: "",
     taskDate: "",
-    taskPrio: "",
+    taskPrio: "1",
     taskBelongTo: "",
   });
   state.setNewTask(false);
@@ -122,6 +122,8 @@ function CreateNewTask() {
         <select
           className="listInput"
           onChange={(e) => handleDropdownListChange(e, taskContext)}
+          value={taskContext.activeList.listName}
+          defaultValue={taskContext.activeList.listName}
         >
           {taskContext.currentList.map((item) => (
             <option value={item.listName} key={item.listId}>
