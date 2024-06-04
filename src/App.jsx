@@ -9,14 +9,21 @@ import "./App.css";
 export const TaskContext = createContext();
 
 function App() {
+  // placeholder list to show on startup and for testing
+  const [currentList, setCurrentList] = useState([
+    {
+      listName: "Placeholder List",
+      listId: "jhasd7861j",
+    },
+  ]);
   const [tempTask, setTempTask] = useState({
     taskId: "",
     taskName: "",
     taskDesc: "",
     taskDate: "",
-    taskPrio: "",
+    taskPrio: "1",
     taskCompleted: false,
-    taskBelongTo: "",
+    taskBelongTo: currentList.listId,
   });
   const [currentTasks, setCurrentTasks] = useState([
     {
@@ -49,14 +56,6 @@ function App() {
   ]);
   const [addNewTask, setNewTask] = useState(false);
   const [editTask, setEditTask] = useState(false);
-
-  // placeholder list to show on startup and for testing
-  const [currentList, setCurrentList] = useState([
-    {
-      listName: "Placeholder List",
-      listId: "jhasd7861j",
-    },
-  ]);
 
   const [showAddNewList, setShowNewList] = useState(false);
   const [tempListName, setTempListName] = useState({

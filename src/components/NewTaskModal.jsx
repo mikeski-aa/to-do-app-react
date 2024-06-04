@@ -33,8 +33,6 @@ function handleDropdownListChange(e, state) {
     (item) => item.listName === e.target.value
   )[0].listId;
   state.setTempTask({ ...state.tempTask, taskBelongTo: tempId });
-  console.log(state.tempTask);
-  console.log(state.currentList);
 }
 
 // submit will add the new task to the currentTasks state, it will also reset temp state.
@@ -111,6 +109,7 @@ function CreateNewTask() {
         <select
           className="prioInput"
           onChange={(e) => handleDropdownPrioChange(e, taskContext)}
+          value="1"
         >
           <option value="1">Low</option>
           <option value="2">Medium</option>
