@@ -15,8 +15,36 @@ function ListButton(props) {
     });
   };
 
+  // handling list delete -> this deletes all children tasks
+  // warn user how many tasks they are deleting
   const handleDeleteClick = () => {
-    console.log("delete list");
+    let affectedTasks = taskContext.currentTasks.filter(
+      (item) => item.taskBelongTo == props.listId
+    );
+
+    let purgedListArray = taskContext.currentList.filter(
+      (item) => item.listId !== props.listId
+    );
+
+    if (affectedTasks.length == 0) {
+      if (
+        confirm(`Are you sure you would like to pernamently delete this list?`)
+      ) {
+        taskContext.setCurrentList(purgedListArray);
+      }
+    } else {
+      if (
+        confirm(
+          `You currently have ${affectedTasks.length} tasks in this list. Are you sure you would like to delete them with the list?`
+        )
+      ) {
+        let purgedTaskArray = taskContext.currentTasks.filter(
+          (item) => item.taskBelongTo !== props.listId
+        );
+        taskContext.setCurrentTasks(purgedTaskArray);
+        taskContext.setCurrentList(purgedListArray);
+      }
+    }
   };
 
   return (
