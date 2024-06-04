@@ -40,6 +40,9 @@ function handleDropdownListChange(e, state) {
 
 function handleSaveClick(state) {
   let tempTask = state.tempTask;
+  console.log("This task belong to this ID");
+  console.log(state.tempTask.taskBelongTo);
+
   console.log(tempTask);
   state.setCurrentTasks([...state.currentTasks, tempTask]);
   state.setTempTask({
@@ -122,9 +125,9 @@ function CreateNewTask() {
         <select
           className="listInput"
           onChange={(e) => handleDropdownListChange(e, taskContext)}
-          value={taskContext.activeList.listName}
-          defaultValue={taskContext.activeList.listName}
+          defaultValue={taskContext.activeList.listId}
         >
+          <option>--Please select a list--</option>
           {taskContext.currentList.map((item) => (
             <option value={item.listName} key={item.listId}>
               {item.listName}
