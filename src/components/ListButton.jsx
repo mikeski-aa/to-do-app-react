@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { TaskContext } from "../App";
 
 // this function is responsible for the list buttons appearing on the navigation bar
@@ -26,11 +26,17 @@ function ListButton(props) {
       (item) => item.listId !== props.listId
     );
 
+    preventLastListDeletion();
+
     if (affectedTasks.length == 0) {
       if (
         confirm(`Are you sure you would like to pernamently delete this list?`)
       ) {
         taskContext.setCurrentList(purgedListArray);
+        taskContext.setActiveList({
+          activeName: taskContext.currentList[findNearestIndex()].listName,
+          activeId: taskContext.currentList[findNearestIndex()].listId,
+        });
       }
     } else {
       if (
@@ -43,7 +49,39 @@ function ListButton(props) {
         );
         taskContext.setCurrentTasks(purgedTaskArray);
         taskContext.setCurrentList(purgedListArray);
+        taskContext.setActiveList({
+          activeName: taskContext.currentList[findNearestIndex()].listName,
+          activeId: taskContext.currentList[findNearestIndex()].listId,
+        });
       }
+    }
+  };
+
+  // helper function to prevent deletion of last list item
+  const preventLastListDeletion = () => {
+    let deleteIndex = taskContext.currentList.findIndex(
+      (i) => i.listId === props.listId
+    );
+
+    if (deleteIndex === 0 && taskContext.currentList.length === 1) {
+      throw new Error(
+        alert(
+          "You cannot delete the only list item remaining! Please create a new list if you would like to delete this one"
+        )
+      );
+    }
+  };
+
+  // helper function for finding the nearest index and setting active window to that one
+  const findNearestIndex = () => {
+    let deleteIndex = taskContext.currentList.findIndex(
+      (i) => i.listId === props.listId
+    );
+
+    if (deleteIndex === 0) {
+      return 1;
+    } else {
+      return deleteIndex - 1;
     }
   };
 
