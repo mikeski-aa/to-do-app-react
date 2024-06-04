@@ -119,7 +119,7 @@ function CreateNewTask() {
           onChange={(e) => handleDropdownListChange(e, taskContext)}
         >
           {taskContext.currentList.map((item) => (
-            <option value={item.listName} key={item.listKey}>
+            <option value={item.listName} key={item.listId}>
               {item.listName}
             </option>
           ))}

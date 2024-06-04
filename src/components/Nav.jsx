@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { TaskContext } from "../App";
 import { ListButton } from "./ListButton";
 import { v4 as uuidv4 } from "uuid";
+import { AddNewList } from "./AddNewList";
 
 // navigation bar
 // here, we want to give user the option to select which task folder they would like to see
@@ -27,9 +28,11 @@ function Nav() {
 
   const handleOpenNewList = () => {
     taskContext.setTempListName({
-      ...taskContext.setTempListName,
-      tempListId: uuidv4(),
+      ...taskContext.tempListName,
+      listId: uuidv4(),
     });
+    taskContext.setShowNewList(true);
+    console.log(taskContext.tempListName);
   };
 
   return (
@@ -49,10 +52,11 @@ function Nav() {
       <div className="lists">
         <div className="currentLists">
           {taskContext.currentList.map((item) => (
-            <ListButton listName={item.listName} key={item.listKey} />
+            <ListButton listName={item.listName} key={item.listId} />
           ))}
         </div>
         <button onClick={handleOpenNewList}>Add New List</button>
+        <AddNewList />
       </div>
 
       <div className="about">

@@ -42,8 +42,8 @@ function App() {
 
   const [showAddNewList, setShowNewList] = useState(false);
   const [tempListName, setTempListName] = useState({
-    tempListName: "",
-    tempListId: "",
+    listName: "",
+    listId: "",
   });
 
   return (
