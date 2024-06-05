@@ -49,7 +49,7 @@ function App() {
     },
     {
       taskId: "153513535",
-      taskName: "Placeholder Name",
+      taskName: "Overdue task",
       taskDesc: "Placeholder Desc",
       taskDate: "2024-01-01",
       taskPrio: "3",
@@ -58,9 +58,9 @@ function App() {
     },
     {
       taskId: "15351355433",
-      taskName: "Placeholder Name",
+      taskName: "Another overdue task",
       taskDesc: "Placeholder Desc",
-      taskDate: "2024-12-13",
+      taskDate: "2022-12-13",
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
