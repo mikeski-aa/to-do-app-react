@@ -9,10 +9,13 @@ import { DisplayTasks } from "./DisplayTasks";
 function dateDifference(inputDate) {
   const date1 = new Date(`${inputDate}T00:00:00.0`);
   const date2 = new Date();
+  const isBefore = date1.getTime() < date2.getTime();
   const diffTime = date2.getTime() - date1.getTime();
   const diffDays = Math.floor(Math.abs(diffTime / (1000 * 3600 * 24)));
 
-  return diffDays;
+  let result = isBefore ? -diffDays : diffDays;
+
+  return result;
 }
 
 // function to show all overdue tasks
@@ -24,7 +27,7 @@ function Overdue() {
     return null;
   }
 
-  console.log(dateDifference("2024-01-04"));
+  console.log(dateDifference("2024-06-07"));
 
   return (
     <div className="overdueContainer">
