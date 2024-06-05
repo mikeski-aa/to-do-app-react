@@ -32,7 +32,7 @@ function Today() {
 
   return (
     <div className="todayContainer">
-      <h3> Today's tasks </h3>
+      <h2> Today's tasks </h2>
       <div className="todayTasks">
         {tempListArray.map((task) => (
           <DisplayTasks

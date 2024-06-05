@@ -6,6 +6,7 @@ import { EditTask } from "./components/EditTask";
 import { Nav } from "./components/Nav";
 import { WelcomeScreen } from "./components/WelcomeScreen";
 import { Today } from "./components/Today";
+import { Upcoming } from "./components/Upcoming";
 import "./App.css";
 
 export const TaskContext = createContext();
@@ -135,6 +136,7 @@ function App() {
           <ToDoItems />
           <WelcomeScreen />
           <Today />
+          <Upcoming />
           <CreateNewTask />
           <EditTask />
         </div>

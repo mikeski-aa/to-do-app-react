@@ -40,6 +40,10 @@ function Nav() {
     taskContext.setMainWindow("3");
   };
 
+  const handleOpenUpcoming = () => {
+    taskContext.setMainWindow("2");
+  };
+
   return (
     <div className="navBar">
       <div className="header">
@@ -47,7 +51,7 @@ function Nav() {
       </div>
       <div className="tasks">
         Tasks
-        <div className="upcomingTasks">
+        <div className="upcomingTasks" onClick={handleOpenUpcoming}>
           <button>Upcoming</button>
         </div>
         <div className="todayTask">
