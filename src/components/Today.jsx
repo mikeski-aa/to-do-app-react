@@ -1,6 +1,14 @@
 import { useContext } from "react";
 import { TaskContext } from "../App";
 
+// date needs to be in YYYY-MM-DD to easily compare with current date stored in tasks
+function getTodayDate() {
+  let todayDate = new Date();
+  todayDate = todayDate.toISOString().split("T")[0];
+
+  return todayDate;
+}
+
 // this will display the screen showing all tasks that are currently due today
 
 function Today() {
@@ -10,12 +18,7 @@ function Today() {
     return null;
   }
 
-  // date needs to be in YYYY-MM-DD to easily compare with current date stored in tasks
-  let todayDate = new Date();
-  todayDate = todayDate.toISOString().split("T")[0];
   console.log(todayDate);
-
-  //   date.setDate(date.getDate() + 30);
 
   return (
     <div className="todayContainer">
