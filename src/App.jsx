@@ -65,7 +65,7 @@ function App() {
     },
     {
       taskId: "15351355416",
-      taskName: "Placeholder Name",
+      taskName: "Today task",
       taskDesc: "Placeholder Desc",
       taskDate: "2024-06-05",
       taskPrio: "3",
@@ -74,7 +74,7 @@ function App() {
     },
     {
       taskId: "15351355412",
-      taskName: "Placeholder Name",
+      taskName: "Today Task",
       taskDesc: "Placeholder Desc",
       taskDate: "2024-06-05",
       taskPrio: "3",

@@ -9,6 +9,16 @@ function getTodayDate() {
   return todayDate;
 }
 
+// this function is supposed to go through all of the current tasks, and
+function todayTasks(taskContext) {
+  let tempHolder = [...taskContext.currentTasks];
+  let todayTasks = tempHolder.filter(
+    (item) => item.taskDate === getTodayDate()
+  );
+
+  console.log(todayTasks);
+}
+
 // this will display the screen showing all tasks that are currently due today
 
 function Today() {
@@ -17,8 +27,7 @@ function Today() {
   if (taskContext.mainWindow != "3") {
     return null;
   }
-
-  console.log(todayDate);
+  todayTasks(taskContext);
 
   return (
     <div className="todayContainer">
