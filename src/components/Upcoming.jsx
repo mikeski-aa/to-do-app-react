@@ -16,6 +16,16 @@ function futureDate(inputDate) {
   return diffDays;
 }
 
+// function to filter array of current tasks, and return array of tasks that match the current state of upcoming days
+function getUpcomingTasks(taskContext, upcomingState) {
+  let tempHolder = [...taskContext.currentTasks];
+  let purgedArray = tempHolder.filter(
+    (item) => futureDate(item.taskDate) < upcomingState
+  );
+
+  return purgedArray;
+}
+
 // this function will check for upcoming tasks depending on how many are set by the user.
 
 function Upcoming() {
@@ -39,13 +49,27 @@ function Upcoming() {
     setUpcomingValue("7");
   };
 
+  console.log(getUpcomingTasks(taskContext, upcomingValue));
+
   return (
     <div className="upcomingTaskContainer">
-      <h2>Upcoming tasks</h2>
+      <h2>Upcoming tasks - next {upcomingValue} days</h2>
       <button onClick={setUpcomingThree}>Next 3 days</button>
       <button onClick={setUpcomingFive}>Next 5 days</button>
       <button onClick={setUpcomingSeven}>Next 7 days</button>
-      <div className="upcomingTasks"></div>
+      <div className="upcomingTasks">
+        {getUpcomingTasks(taskContext, upcomingValue).map((task) => (
+          <DisplayTasks
+            taskName={task.taskName}
+            taskDesc={task.taskDesc}
+            taskDate={task.taskDate}
+            taskPrio={task.taskPrio}
+            taskId={task.taskId}
+            taskCompleted={task.taskCompleted}
+            key={task.taskId}
+          />
+        ))}
+      </div>
     </div>
   );
 }
