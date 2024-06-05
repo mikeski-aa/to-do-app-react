@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { TaskContext } from "../App";
+import { DisplayTasks } from "./DisplayTasks";
 
 // date needs to be in YYYY-MM-DD to easily compare with current date stored in tasks
 function getTodayDate() {
@@ -9,14 +10,14 @@ function getTodayDate() {
   return todayDate;
 }
 
-// this function is supposed to go through all of the current tasks, and
+// this function is supposed to go through all of the current tasks, and return only tasks that are due in today
 function todayTasks(taskContext) {
   let tempHolder = [...taskContext.currentTasks];
   let todayTasks = tempHolder.filter(
     (item) => item.taskDate === getTodayDate()
   );
 
-  console.log(todayTasks);
+  return todayTasks;
 }
 
 // this will display the screen showing all tasks that are currently due today
@@ -27,12 +28,24 @@ function Today() {
   if (taskContext.mainWindow != "3") {
     return null;
   }
-  todayTasks(taskContext);
+  let tempListArray = todayTasks(taskContext);
 
   return (
     <div className="todayContainer">
       <h3> Today's tasks </h3>
-      <p></p>
+      <div className="todayTasks">
+        {tempListArray.map((task) => (
+          <DisplayTasks
+            taskName={task.taskName}
+            taskDesc={task.taskDesc}
+            taskDate={task.taskDate}
+            taskPrio={task.taskPrio}
+            taskId={task.taskId}
+            taskCompleted={task.taskCompleted}
+            key={task.taskId}
+          />
+        ))}
+      </div>
     </div>
   );
 }
