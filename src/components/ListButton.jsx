@@ -11,6 +11,10 @@ function ListButton(props) {
     console.log("I'm opening a new list: ");
     console.log(props.listId);
     console.log(props.listName);
+
+    // tells mainWindow to display lists
+    taskContext.setMainWindow("5");
+
     taskContext.setActiveList({
       activeName: props.listName,
       activeId: props.listId,

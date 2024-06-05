@@ -23,6 +23,10 @@ function newTaskHandler(state) {
 function ToDoItems() {
   const taskContext = useContext(TaskContext);
 
+  if (taskContext.mainWindow != "5") {
+    return null;
+  }
+
   let tempListArray = taskContext.currentTasks.filter(
     (task) => task.taskBelongTo == taskContext.activeList.activeId
   );

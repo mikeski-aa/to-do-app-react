@@ -40,6 +40,7 @@ function handleDropdownListChange(e, state) {
 
 function handleSaveClick(state) {
   let tempTask = state.tempTask;
+
   console.log("This task belong to this ID");
   console.log(state.tempTask.taskBelongTo);
 

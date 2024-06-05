@@ -36,22 +36,31 @@ function Nav() {
     console.log(taskContext.tempListName);
   };
 
+  const handleOpenToday = () => {
+    taskContext.setMainWindow("3");
+  };
+
   return (
     <div className="navBar">
       <div className="header">
         <h2>Menu</h2>
       </div>
       <div className="tasks">
+        Tasks
         <div className="upcomingTasks">
           <button>Upcoming</button>
         </div>
         <div className="todayTask">
-          <button>Today</button>
+          <button onClick={handleOpenToday}>Today</button>
+        </div>
+        <div className="overdueTask">
+          <button>Overdue</button>
         </div>
       </div>
 
       <div className="lists">
         <div className="currentLists">
+          Your Lists
           {taskContext.currentList.map((item) => (
             <ListButton
               listName={item.listName}

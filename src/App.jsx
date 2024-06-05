@@ -4,6 +4,8 @@ import { CreateNewTask } from "./components/NewTaskModal";
 import { createContext } from "react";
 import { EditTask } from "./components/EditTask";
 import { Nav } from "./components/Nav";
+import { WelcomeScreen } from "./components/WelcomeScreen";
+import { Today } from "./components/Today";
 import "./App.css";
 
 export const TaskContext = createContext();
@@ -32,6 +34,7 @@ function App() {
 
   // this is where all the tasks live - one large state.
   // is this the best solution? IDK.
+  // date format has to be in YYYY-MM-DD for date input to work
   const [currentTasks, setCurrentTasks] = useState([
     {
       taskId: "15351355",
@@ -55,7 +58,7 @@ function App() {
       taskId: "153513554",
       taskName: "Placeholder Name",
       taskDesc: "Placeholder Desc",
-      taskDate: "2024-01-01",
+      taskDate: "2024-12-13",
       taskPrio: "3",
       taskCompleted: true,
       taskBelongTo: "jhasd7861j",
@@ -80,6 +83,10 @@ function App() {
     activeId: currentList[0].listId,
   });
 
+  // state for selecting which window to display deepnding on what is being selected.
+  // 1 = welcome window, 2 = upcoming, 3 = today, 4 = overdue, 5 = display list items
+  const [mainWindow, setMainWindow] = useState("1");
+
   return (
     <>
       <h1>To do app</h1>
@@ -101,11 +108,15 @@ function App() {
           setTempListName,
           activeList,
           setActiveList,
+          mainWindow,
+          setMainWindow,
         }}
       >
         <div className="mainStuff">
           <Nav />
           <ToDoItems />
+          <WelcomeScreen />
+          <Today />
           <CreateNewTask />
           <EditTask />
         </div>

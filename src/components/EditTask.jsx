@@ -55,8 +55,6 @@ function handleCancelClick(taskContext) {
 // function to handle saving back to the current state
 function handleSaveClick(taskContext) {
   let tempHolder = [...taskContext.currentTasks];
-  console.log("This task belong to this ID");
-  console.log(taskContext.tempTask.taskBelongTo);
 
   // assigns new values to shallow copy of currentTasks
 
