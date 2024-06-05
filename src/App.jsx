@@ -7,6 +7,7 @@ import { Nav } from "./components/Nav";
 import { WelcomeScreen } from "./components/WelcomeScreen";
 import { Today } from "./components/Today";
 import { Upcoming } from "./components/Upcoming";
+import { Overdue } from "./components/Overdue";
 import "./App.css";
 
 export const TaskContext = createContext();
@@ -164,6 +165,7 @@ function App() {
           <WelcomeScreen />
           <Today />
           <Upcoming />
+          <Overdue />
           <CreateNewTask />
           <EditTask />
         </div>

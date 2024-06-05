@@ -44,6 +44,10 @@ function Nav() {
     taskContext.setMainWindow("2");
   };
 
+  const handleOpenOverdue = () => {
+    taskContext.setMainWindow("4");
+  };
+
   return (
     <div className="navBar">
       <div className="header">
@@ -58,7 +62,7 @@ function Nav() {
           <button onClick={handleOpenToday}>Today</button>
         </div>
         <div className="overdueTask">
-          <button>Overdue</button>
+          <button onClick={handleOpenOverdue}>Overdue</button>
         </div>
       </div>
 
