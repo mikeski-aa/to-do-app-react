@@ -38,6 +38,7 @@ function getTempTask(inputId, currentTasks) {
 
 function DisplayTasks(props) {
   const taskContext = useContext(TaskContext);
+  let doneStatus;
 
   // handler for clicking of the box
   // I am keeping this handler within the function for now, however, I am unsure if I should take it out or bring others in
@@ -56,9 +57,17 @@ function DisplayTasks(props) {
     taskContext.setCurrentTasks(tempArray);
   };
 
+  // change classname if done is ticked
+
+  if (props.taskCompleted === true) {
+    doneStatus = "markDone";
+  } else {
+    doneStatus = "";
+  }
+
   return (
-    <div className="task">
-      <div className="taskInfo">
+    <div className={`task ${doneStatus}`}>
+      <div className={`taskInfo`}>
         <div className="displayTaskName">{props.taskName}</div>
         <input
           type="checkbox"
