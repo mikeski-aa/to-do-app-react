@@ -3,7 +3,10 @@ import { TaskContext } from "../App";
 import { ListButton } from "./ListButton";
 import { v4 as uuidv4 } from "uuid";
 import { AddNewList } from "./AddNewList";
+import { getUpcomingTasks } from "./Upcoming";
 import "../styles/Nav.css";
+
+// function to get number of upcoming tasks
 
 // navigation bar
 // here, we want to give user the option to select which task folder they would like to see
@@ -11,6 +14,8 @@ import "../styles/Nav.css";
 
 function Nav() {
   const taskContext = useContext(TaskContext);
+
+  const upcomingTotal = getUpcomingTasks(taskContext, "7").length;
 
   const handleOpenNewList = () => {
     console.log(taskContext.currentTasks);
@@ -42,14 +47,25 @@ function Nav() {
         </div>
         <div className="tasks">
           <b>Tasks</b>
-          <div className="upcomingTasks" onClick={handleOpenUpcoming}>
-            <button>Upcoming</button>
-          </div>
-          <div className="todayTask">
-            <button onClick={handleOpenToday}>Today</button>
-          </div>
-          <div className="overdueTask">
-            <button onClick={handleOpenOverdue}>Overdue</button>
+          <div className="taskButtonsContainer">
+            <div className="upcomingTasks">
+              <button className="tasksBtnsNav" onClick={handleOpenUpcoming}>
+                Upcoming
+              </button>
+              <div className="upcomingTaskTotal">
+                <b>{upcomingTotal}</b>
+              </div>
+            </div>
+            <div className="todayTask">
+              <button className="tasksBtnsNav" onClick={handleOpenToday}>
+                Today
+              </button>
+            </div>
+            <div className="overdueTask">
+              <button className="tasksBtnsNav" onClick={handleOpenOverdue}>
+                Overdue
+              </button>
+            </div>
           </div>
         </div>
 

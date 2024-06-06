@@ -74,4 +74,4 @@ function Upcoming() {
   );
 }
 
-export { Upcoming };
+export { Upcoming, futureDate, getUpcomingTasks };

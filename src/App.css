@@ -1,6 +1,6 @@
 .mainStuff {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 5fr 1fr;
 }
 
 button {
@@ -37,4 +37,8 @@ button {
 
 .deleteTask {
   --c: #e95a49;
+}
+
+.currentTasks {
+  padding-left: 10px;
 }
