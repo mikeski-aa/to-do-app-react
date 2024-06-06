@@ -49,12 +49,12 @@ function AddNewList() {
         ></input>
       </div>
 
-      <div>
-        <button className="saveNewList" onClick={handleSaveList}>
-          Save list
-        </button>
+      <div className="addNewListButtonContainer">
         <button className="cancelNewList" onClick={handleCancelList}>
           Cancel
+        </button>
+        <button className="saveNewList" onClick={handleSaveList}>
+          Save list
         </button>
       </div>
     </div>

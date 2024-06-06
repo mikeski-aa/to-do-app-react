@@ -53,7 +53,8 @@
   display: flex;
 }
 
-.displayTask {
+.displayTask,
+.upcomingTasksMain {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;

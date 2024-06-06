@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding-left: 10px;
 }
 
 .lists {
@@ -31,6 +32,10 @@
   text-align: center;
 }
 
+.cancelNewList {
+  --c: #e95a49;
+}
+
 .listButtonDiv {
   display: flex;
   justify-content: space-between;
@@ -47,11 +52,13 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  outline: 3px solid #229091;
+  padding-bottom: 5px;
 }
 
 .listEnter {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
 }
 
 .tasksBtnsNav {
@@ -92,4 +99,9 @@
   background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
   outline-offset: 0.1em;
   width: 25px;
+}
+
+.addNewListButtonContainer {
+  display: flex;
+  gap: 5px;
 }

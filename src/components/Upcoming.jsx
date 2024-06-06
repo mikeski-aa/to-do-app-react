@@ -57,7 +57,7 @@ function Upcoming() {
       <button onClick={setUpcomingThree}>Next 3 days</button>
       <button onClick={setUpcomingFive}>Next 5 days</button>
       <button onClick={setUpcomingSeven}>Next 7 days</button>
-      <div className="upcomingTasks">
+      <div className="upcomingTasksMain">
         {getUpcomingTasks(taskContext, upcomingValue).map((task) => (
           <DisplayTasks
             taskName={task.taskName}
