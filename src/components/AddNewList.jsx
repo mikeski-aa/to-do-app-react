@@ -5,6 +5,7 @@ import { TaskContext } from "../App";
 
 function AddNewList() {
   const taskContext = useContext(TaskContext);
+  let classNameForBox = "";
 
   // saves new list name to temp state before it is added to list state in app
   const handleInputChange = (e) => {
@@ -32,13 +33,15 @@ function AddNewList() {
   };
 
   if (taskContext.showAddNewList === false) {
-    return null;
+    classNameForBox = "hideAddNewList";
+  } else {
+    classNameForBox = "showAddNewList";
   }
 
   return (
-    <div className="addNewList">
+    <div className={`addNewList ${classNameForBox}`}>
       <div className="listEnter">
-        <label>
+        <label className="newListLabel">
           <b>Enter new list name</b>
         </label>
         <input

@@ -59,6 +59,7 @@
 .listEnter {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .tasksBtnsNav {
@@ -104,4 +105,25 @@
 .addNewListButtonContainer {
   display: flex;
   gap: 5px;
+}
+
+.hideAddNewList {
+  opacity: 0;
+  max-height: 0;
+}
+
+.showAddNewList {
+  max-height: 100%;
+}
+
+.addNewList {
+  transition: 1s cubic-bezier(1, 1, 1, 1);
+}
+
+.newListLabel {
+  text-align: center;
+}
+
+.newListNameInput {
+  width: 75%;
 }
