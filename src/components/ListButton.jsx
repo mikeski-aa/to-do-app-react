@@ -112,7 +112,9 @@ function ListButton(props) {
       <button className="listButton" onClick={handleListClick}>
         {props.listName}
       </button>
-      <button onClick={handleDeleteClick}>X delete list item</button>
+      <button className="deleteListItem" onClick={handleDeleteClick}>
+        X
+      </button>
     </div>
   );
 }

@@ -37,19 +37,26 @@ function AddNewList() {
 
   return (
     <div className="addNewList">
-      <label>Enter new list name</label>
-      <input
-        type="text"
-        className="newListNameInput"
-        placeholder="My new list"
-        onChange={handleInputChange}
-      ></input>
-      <button className="saveNewList" onClick={handleSaveList}>
-        Save list
-      </button>
-      <button className="cancelNewList" onClick={handleCancelList}>
-        Cancel
-      </button>
+      <div className="listEnter">
+        <label>
+          <b>Enter new list name</b>
+        </label>
+        <input
+          type="text"
+          className="newListNameInput"
+          placeholder="My new list"
+          onChange={handleInputChange}
+        ></input>
+      </div>
+
+      <div>
+        <button className="saveNewList" onClick={handleSaveList}>
+          Save list
+        </button>
+        <button className="cancelNewList" onClick={handleCancelList}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }

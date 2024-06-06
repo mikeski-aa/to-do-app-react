@@ -22,3 +22,30 @@
 .addNewListItemBtn {
   width: 35%;
 }
+
+.deleteListItem {
+  --c: #e95a49;
+}
+
+.listButtonDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.currentLists {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.addNewList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.listEnter {
+  display: flex;
+  gap: 1rem;
+}

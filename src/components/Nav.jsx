@@ -41,7 +41,7 @@ function Nav() {
           <h2>Menu</h2>
         </div>
         <div className="tasks">
-          Tasks
+          <b>Tasks</b>
           <div className="upcomingTasks" onClick={handleOpenUpcoming}>
             <button>Upcoming</button>
           </div>
@@ -55,7 +55,7 @@ function Nav() {
 
         <div className="lists">
           <div className="currentLists">
-            Your Lists
+            <b>Your Lists</b>
             {taskContext.currentList.map((item) => (
               <ListButton
                 listName={item.listName}
