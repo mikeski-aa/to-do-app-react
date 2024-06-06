@@ -72,10 +72,12 @@ function Upcoming() {
             taskPrio={task.taskPrio}
             taskId={task.taskId}
             taskCompleted={task.taskCompleted}
+            taskDetailShow={task.taskDetailShow}
             key={task.taskId}
           />
         ))}
       </div>
+      <hr></hr>
       <div className="upcomingTasksMain">
         {getCompleteTaskList(getUpcomingTasks(taskContext, upcomingValue)).map(
           (task) => (
@@ -86,6 +88,7 @@ function Upcoming() {
               taskPrio={task.taskPrio}
               taskId={task.taskId}
               taskCompleted={task.taskCompleted}
+              taskDetailShow={task.taskDetailShow}
               key={task.taskId}
             />
           )

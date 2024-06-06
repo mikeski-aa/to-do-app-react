@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { TaskContext } from "../App";
-
+import { resetAllDisplayStates } from "./utils";
 // this function is responsible for the list buttons appearing on the navigation bar
 // when a list item is clicked, all of the items associated with the given list will be rendered - filter method for this?
 
@@ -8,6 +8,9 @@ function ListButton(props) {
   const taskContext = useContext(TaskContext);
 
   const handleListClick = () => {
+    taskContext.setEditTask(false);
+    taskContext.setNewTask(false);
+    // resetAllDisplayStates(taskContext);
     console.log("I'm opening a new list: ");
     console.log(props.listId);
     console.log(props.listName);

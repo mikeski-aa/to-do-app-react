@@ -2,7 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../App";
 import "../styles/DisplayTasks.css";
 import svg from "../assets/down-square-svgrepo-com.svg";
-import { resetAllDisplayStates } from "./utils";
+import {
+  resetAllDisplayStates,
+  formatPriorityDisplay,
+  formatDate,
+} from "./utils";
 
 // function for handling editing of individual card
 // this task needs to assign several states -> first state to display the edit card div
@@ -15,7 +19,8 @@ function handleEditEvent(taskId, taskContext) {
     );
   } else if (taskContext.editTask === true) {
     taskContext.setEditTask(false);
-    return resetAllDisplayStates(taskContext);
+    resetAllDisplayStates(taskContext);
+    return;
   }
 
   changeDetailStatus(taskId, taskContext);
@@ -118,11 +123,15 @@ function DisplayTasks(props) {
             <div>
               <b>Due date:</b>
             </div>
-            <div className="displayTaskDue">{props.taskDate}</div>
+            <div className="displayTaskDue">
+              {formatDate(props.taskDate, taskContext.dateFormat)}
+            </div>
             <div>
               <b>Priority:</b>
             </div>
-            <div className="displayTaskPrio">{props.taskPrio}</div>
+            <div className="displayTaskPrio">
+              {formatPriorityDisplay(props.taskPrio)}
+            </div>
           </div>
           <hr />
         </div>

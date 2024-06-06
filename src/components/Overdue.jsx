@@ -56,6 +56,7 @@ function Overdue() {
           />
         ))}
       </div>
+      <hr></hr>
       <div className="displayOverdueTasks">
         {getCompleteTaskList(getOverdueTasks(taskContext)).map((task) => (
           <DisplayTasks

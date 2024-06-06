@@ -43,6 +43,7 @@ function Today() {
             taskPrio={task.taskPrio}
             taskId={task.taskId}
             taskCompleted={task.taskCompleted}
+            taskDetailShow={task.taskDetailShow}
             key={task.taskId}
           />
         ))}
@@ -56,6 +57,7 @@ function Today() {
             taskPrio={task.taskPrio}
             taskId={task.taskId}
             taskCompleted={task.taskCompleted}
+            taskDetailShow={task.taskDetailShow}
             key={task.taskId}
           />
         ))}

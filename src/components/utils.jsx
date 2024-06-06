@@ -28,4 +28,31 @@ function resetAllDisplayStates(taskContext) {
   taskContext.setCurrentTasks(tempArray);
 }
 
-export { getCompleteTaskList, getIncompleteTaskList, resetAllDisplayStates };
+// function to format date
+function formatDate(inputDate, dateState) {
+  let tempDate = inputDate.split("-");
+  let newDate;
+
+  if (dateState === "EU") {
+    return (newDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0]);
+  }
+}
+
+// function to format priority
+function formatPriorityDisplay(input) {
+  if (input == 1) {
+    return "LOW";
+  } else if (input == 2) {
+    return "MEDIUM";
+  } else {
+    return "HIGH";
+  }
+}
+
+export {
+  getCompleteTaskList,
+  getIncompleteTaskList,
+  resetAllDisplayStates,
+  formatPriorityDisplay,
+  formatDate,
+};

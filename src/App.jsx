@@ -100,7 +100,7 @@ function App() {
       taskName: "Upcoming + 5",
       taskDesc: "Placeholder Desc",
       taskDate: "2024-06-10",
-      taskPrio: "3",
+      taskPrio: "1",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
       taskDetailShow: false,
@@ -110,7 +110,7 @@ function App() {
       taskName: "Upcoming + 4",
       taskDesc: "Placeholder Desc",
       taskDate: "2024-06-09",
-      taskPrio: "3",
+      taskPrio: "2",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
       taskDetailShow: false,
@@ -120,7 +120,7 @@ function App() {
       taskName: "Upcoming + 7",
       taskDesc: "Placeholder Desc",
       taskDate: "2024-06-12",
-      taskPrio: "3",
+      taskPrio: "1",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
       taskDetailShow: false,
@@ -149,6 +149,9 @@ function App() {
   // 1 = welcome window, 2 = upcoming, 3 = today, 4 = overdue, 5 = display list items
   const [mainWindow, setMainWindow] = useState("1");
 
+  // date state which can be toggled by user
+  const [dateFormat, setDateFormat] = useState("EU");
+
   return (
     <>
       <h1>To do app</h1>
@@ -172,6 +175,8 @@ function App() {
           setActiveList,
           mainWindow,
           setMainWindow,
+          dateFormat,
+          setDateFormat,
         }}
       >
         <div className="mainStuff">
