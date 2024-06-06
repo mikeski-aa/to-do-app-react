@@ -8,6 +8,7 @@ import { WelcomeScreen } from "./components/WelcomeScreen";
 import { Today } from "./components/Today";
 import { Upcoming } from "./components/Upcoming";
 import { Overdue } from "./components/Overdue";
+import { resetAllDisplayStates } from "./components/utils";
 import "./App.css";
 
 export const TaskContext = createContext();

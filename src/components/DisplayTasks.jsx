@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../App";
 import "../styles/DisplayTasks.css";
 import svg from "../assets/down-square-svgrepo-com.svg";
+import { resetAllDisplayStates } from "./utils";
 
 // function for handling editing of individual card
 // this task needs to assign several states -> first state to display the edit card div
@@ -13,7 +14,8 @@ function handleEditEvent(taskId, taskContext) {
       "Finish adding a new task or cancel it before editing an existing task"
     );
   } else if (taskContext.editTask === true) {
-    return alert("Finish editing existing task before opening a new edit!");
+    taskContext.setEditTask(false);
+    return resetAllDisplayStates(taskContext);
   }
 
   changeDetailStatus(taskId, taskContext);

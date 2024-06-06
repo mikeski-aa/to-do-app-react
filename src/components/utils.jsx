@@ -16,4 +16,16 @@ function getIncompleteTaskList(inputArray) {
   return purgedArray;
 }
 
-export { getCompleteTaskList, getIncompleteTaskList };
+// function to go through the array and reset every display state to false
+function resetAllDisplayStates(taskContext) {
+  let tempArray = [...taskContext.currentTasks];
+  for (let x = 0; x < tempArray.length; x++) {
+    if (tempArray[x].taskDetailShow === true) {
+      tempArray[x] = { ...tempArray[x], taskDetailShow: false };
+    }
+  }
+
+  taskContext.setCurrentTasks(tempArray);
+}
+
+export { getCompleteTaskList, getIncompleteTaskList, resetAllDisplayStates };

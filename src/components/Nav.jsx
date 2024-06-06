@@ -6,6 +6,7 @@ import { AddNewList } from "./AddNewList";
 import { getUpcomingTasks } from "./Upcoming";
 import { todayTasks } from "./Today";
 import { getOverdueTasks } from "./Overdue";
+import { resetAllDisplayStates } from "./utils";
 import "../styles/Nav.css";
 
 // function to get number of upcoming tasks
@@ -22,6 +23,9 @@ function Nav() {
   const overdueTotal = getOverdueTasks(taskContext).length;
 
   const handleOpenNewList = () => {
+    taskContext.setEditTask(false);
+    taskContext.setNewTask(false);
+    resetAllDisplayStates(taskContext);
     console.log(taskContext.currentTasks);
     taskContext.setTempListName({
       ...taskContext.tempListName,
@@ -32,14 +36,23 @@ function Nav() {
   };
 
   const handleOpenToday = () => {
+    taskContext.setEditTask(false);
+    taskContext.setNewTask(false);
+    resetAllDisplayStates(taskContext);
     taskContext.setMainWindow("3");
   };
 
   const handleOpenUpcoming = () => {
+    taskContext.setEditTask(false);
+    taskContext.setNewTask(false);
+    resetAllDisplayStates(taskContext);
     taskContext.setMainWindow("2");
   };
 
   const handleOpenOverdue = () => {
+    taskContext.setEditTask(false);
+    taskContext.setNewTask(false);
+    resetAllDisplayStates(taskContext);
     taskContext.setMainWindow("4");
   };
 
