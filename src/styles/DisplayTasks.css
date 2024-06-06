@@ -1,0 +1,15 @@
+.taskHeader {
+  display: flex;
+}
+
+.detailHide {
+  opacity: 0;
+}
+
+.detailsShow {
+  opacity: 1;
+}
+
+.taskDetails {
+  transition: 1s ease-in-out;
+}

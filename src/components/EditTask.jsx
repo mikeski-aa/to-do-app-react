@@ -40,16 +40,13 @@ function handleListDropdown(e, taskContext) {
 }
 
 // function for handling cancel click + resetting temp
-function handleCancelClick(taskContext) {
+function handleDeleteClick(taskContext) {
   taskContext.setEditTask(false);
-  taskContext.setTempTask({
-    taskId: "",
-    taskName: "",
-    taskDesc: "",
-    taskDate: "",
-    taskPrio: "",
-    taskBelongTo: "",
-  });
+  let tempState = [...taskContext.currentTasks];
+  let newStateArray = tempState.filter(
+    (x) => x.taskId !== taskContext.tempTask.taskId
+  );
+  taskContext.setCurrentTasks(newStateArray);
 }
 
 // function to handle saving back to the current state
@@ -155,16 +152,16 @@ function EditTask() {
 
       <div className="newTaskButtons">
         <button
+          className="cancelNewTask"
+          onClick={() => handleDeleteClick(taskContext)}
+        >
+          Delete
+        </button>
+        <button
           className="saveNewTask"
           onClick={() => handleSaveClick(taskContext)}
         >
           Save task
-        </button>
-        <button
-          className="cancelNewTask"
-          onClick={() => handleCancelClick(taskContext)}
-        >
-          Cancel
         </button>
       </div>
     </div>
