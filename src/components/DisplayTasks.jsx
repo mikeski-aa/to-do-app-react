@@ -1,32 +1,41 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../App";
 import "../styles/DisplayTasks.css";
-
-// function for handling deletion of an individual card
-// deprecated, moving elsewhere
-
-// function handleDeleteEvent(taskId, taskContext) {
-//   let tempState = [...taskContext.currentTasks];
-//   let newStateArray = tempState.filter((x) => x.taskId !== taskId);
-//   taskContext.setCurrentTasks(newStateArray);
-// }
+import svg from "../assets/down-square-svgrepo-com.svg";
 
 // function for handling editing of individual card
 // this task needs to assign several states -> first state to display the edit card div
 // second state to store the edit card ID
 // if
-function handleEditEvent(taskId, taskContext, setDetailsShow) {
+function handleEditEvent(taskId, taskContext) {
   if (taskContext.addNewTask === true) {
     return alert(
       "Finish adding a new task or cancel it before editing an existing task"
     );
+  } else if (taskContext.editTask === true) {
+    return alert("Finish editing existing task before opening a new edit!");
   }
 
-  setDetailsShow("detailShow");
+  changeDetailStatus(taskId, taskContext);
   taskContext.setEditTask(true);
   console.log("watch if correct belong to assigned");
   console.log(getTempTask(taskId, taskContext.currentTasks));
   taskContext.setTempTask(getTempTask(taskId, taskContext.currentTasks));
+}
+
+// function to change specific task detail status
+function changeDetailStatus(taskId, taskContext) {
+  let tempHolder = [...taskContext.currentTasks];
+  for (let x = 0; x < tempHolder.length; x++) {
+    if (tempHolder[x].taskId === taskId) {
+      tempHolder[x] = {
+        ...tempHolder[x],
+        taskDetailShow: !tempHolder[x].taskDetailShow,
+      };
+    }
+  }
+
+  taskContext.setCurrentTasks(tempHolder);
 }
 
 // function to filter existing tasks, extracting the sought after task and setting it to temp state
@@ -41,10 +50,9 @@ function getTempTask(inputId, currentTasks) {
 //   taskId: "",taskName: "",taskDesc: "", taskDate: "", taskPrio: "",
 
 function DisplayTasks(props) {
-  // individual state for each task, added to manipulate how elements should show
-  const [detailsShow, setDetailsShow] = useState("detailHide");
   const taskContext = useContext(TaskContext);
   let doneStatus;
+  let detailShow;
 
   // handler for clicking of the box
   // I am keeping this handler within the function for now, however, I am unsure if I should take it out or bring others in
@@ -71,36 +79,40 @@ function DisplayTasks(props) {
     doneStatus = "";
   }
 
+  // check if details should be displayed
+
+  if (props.taskDetailShow === true) {
+    detailShow = "detailShow";
+  } else {
+    detailShow = "detailHide";
+  }
+
   return (
     <div className={`task ${doneStatus}`}>
       <div className={`taskInfo`}>
         <div className="taskHeader">
-          <input
-            type="checkbox"
-            className="displayTaskCompleted"
-            defaultChecked={props.taskCompleted}
-            onChange={handleCompleteClick}
-          ></input>
-          <div className="displayTaskName">{props.taskName}</div>
+          <div className="checkAndTitle">
+            <input
+              type="checkbox"
+              className="displayTaskCompleted"
+              defaultChecked={props.taskCompleted}
+              onChange={handleCompleteClick}
+            ></input>
+            <div className="displayTaskName">{props.taskName}</div>
+          </div>
           <button
-            onClick={() =>
-              handleEditEvent(props.taskId, taskContext, setDetailsShow)
-            }
+            className="dropdownButton"
+            onClick={() => handleEditEvent(props.taskId, taskContext)}
           >
-            Edit
+            <img src={svg} className="dropdownButtonIcon"></img>
           </button>
         </div>
-        <div className={`taskDetails ${detailsShow}`}>
+        <div className={`taskDetails ${detailShow}`}>
           <div className="displayTaskDesc">{props.taskDesc}</div>
           <div className="displayTaskDue">{props.taskDate}</div>
           <div className="displayTaskPrio">{props.taskPrio}</div>
         </div>
       </div>
-      {/* <div className="buttons">
-        <button onClick={() => handleDeleteEvent(props.taskId, taskContext)}>
-          Delete
-        </button> */}
-      {/* </div> */}
     </div>
   );
 }

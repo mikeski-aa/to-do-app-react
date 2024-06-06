@@ -64,6 +64,7 @@ function handleSaveClick(taskContext) {
         taskDate: taskContext.tempTask.taskDate,
         taskPrio: taskContext.tempTask.taskPrio,
         taskBelongTo: taskContext.tempTask.taskBelongTo,
+        taskDetailShow: false,
       };
     }
   }

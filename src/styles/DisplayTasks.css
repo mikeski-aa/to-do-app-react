@@ -3,13 +3,51 @@
 }
 
 .detailHide {
-  opacity: 0;
+  background-color: aquamarine;
+  transform: scaleY(0);
+  height: 0;
 }
 
-.detailsShow {
-  opacity: 1;
+.detailShow {
+  background-color: rgb(106, 106, 184);
+  height: 100%;
+  transform: scaleY(1);
 }
 
 .taskDetails {
   transition: 1s ease-in-out;
+}
+
+.markDone {
+  background-color: grey;
+  opacity: 0.5;
+}
+
+.task {
+  transition: 0.5s ease-in-out;
+}
+
+.dropdownButton {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: 0;
+}
+
+.dropdownButtonIcon {
+  position: relative;
+  top: 50%;
+  left: 0%;
+  width: 25px;
+  border-radius: 12px;
+}
+
+.taskHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkAndTitle {
+  display: flex;
 }

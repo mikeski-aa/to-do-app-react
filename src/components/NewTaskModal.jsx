@@ -53,6 +53,7 @@ function handleSaveClick(state) {
     taskDate: "",
     taskPrio: "1",
     taskBelongTo: "",
+    taskDetailShow: false,
   });
   console.log(state.currentTasks);
   state.setNewTask(false);
@@ -67,6 +68,7 @@ function handleCancelClick(state) {
     taskDate: "",
     taskPrio: "1",
     taskBelongTo: "",
+    taskDetailShow: false,
   });
   state.setNewTask(false);
 }

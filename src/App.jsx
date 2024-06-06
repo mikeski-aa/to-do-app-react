@@ -37,6 +37,7 @@ function App() {
     taskPrio: "1",
     taskCompleted: false,
     taskBelongTo: currentList[0].listId,
+    taskDetailShow: false,
   });
 
   // this is where all the tasks live - one large state.
@@ -51,6 +52,7 @@ function App() {
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
+      taskDetailShow: false,
     },
     {
       taskId: "153513535",
@@ -60,6 +62,7 @@ function App() {
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
+      taskDetailShow: false,
     },
     {
       taskId: "15351355433",
@@ -69,6 +72,7 @@ function App() {
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
+      taskDetailShow: false,
     },
     {
       taskId: "15351355416",
@@ -78,6 +82,7 @@ function App() {
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
+      taskDetailShow: false,
     },
     {
       taskId: "15351355412",
@@ -87,6 +92,7 @@ function App() {
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
+      taskDetailShow: false,
     },
     {
       taskId: "1535135541222",
@@ -96,6 +102,7 @@ function App() {
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
+      taskDetailShow: false,
     },
     {
       taskId: "1535135541233",
@@ -105,6 +112,7 @@ function App() {
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
+      taskDetailShow: false,
     },
     {
       taskId: "1535135541233390",
@@ -114,6 +122,7 @@ function App() {
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
+      taskDetailShow: false,
     },
   ]);
   // state to control visibility of add new task section
@@ -134,6 +143,9 @@ function App() {
     activeName: currentList[0].listName,
     activeId: currentList[0].listId,
   });
+
+  // this is a helper for setting states back
+  const [displayHelperState, setDisplayHelperState] = useState(null);
 
   // state for selecting which window to display deepnding on what is being selected.
   // 1 = welcome window, 2 = upcoming, 3 = today, 4 = overdue, 5 = display list items
@@ -162,6 +174,8 @@ function App() {
           setActiveList,
           mainWindow,
           setMainWindow,
+          displayHelperState,
+          setDisplayHelperState,
         }}
       >
         <div className="mainStuff">
