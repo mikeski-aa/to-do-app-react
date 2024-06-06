@@ -27,7 +27,7 @@
 
 .deleteListItem {
   --c: #e95a49;
-  width: 12%;
+  width: 25px;
   text-align: center;
 }
 
@@ -70,12 +70,16 @@
   text-align: start;
 }
 
-.upcomingTasks {
+.upcomingTasks,
+.todayTask,
+.overdueTask {
   display: flex;
   justify-content: space-between;
 }
 
-.upcomingTaskTotal {
+.upcomingTaskTotal,
+.todayTaskTotal,
+.overdueTaskTotal {
   text-align: center;
   --c: #e95a49; /* the color*/
 

@@ -4,6 +4,8 @@ import { ListButton } from "./ListButton";
 import { v4 as uuidv4 } from "uuid";
 import { AddNewList } from "./AddNewList";
 import { getUpcomingTasks } from "./Upcoming";
+import { todayTasks } from "./Today";
+import { getOverdueTasks } from "./Overdue";
 import "../styles/Nav.css";
 
 // function to get number of upcoming tasks
@@ -16,6 +18,8 @@ function Nav() {
   const taskContext = useContext(TaskContext);
 
   const upcomingTotal = getUpcomingTasks(taskContext, "7").length;
+  const todayTotal = todayTasks(taskContext).length;
+  const overdueTotal = getOverdueTasks(taskContext).length;
 
   const handleOpenNewList = () => {
     console.log(taskContext.currentTasks);
@@ -60,11 +64,17 @@ function Nav() {
               <button className="tasksBtnsNav" onClick={handleOpenToday}>
                 Today
               </button>
+              <div className="todayTaskTotal">
+                <b>{todayTotal}</b>
+              </div>
             </div>
             <div className="overdueTask">
               <button className="tasksBtnsNav" onClick={handleOpenOverdue}>
                 Overdue
               </button>
+              <div className="overdueTaskTotal">
+                <b>{overdueTotal}</b>
+              </div>
             </div>
           </div>
         </div>

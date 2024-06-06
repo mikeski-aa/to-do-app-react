@@ -50,4 +50,4 @@ function Today() {
   );
 }
 
-export { Today };
+export { Today, todayTasks };

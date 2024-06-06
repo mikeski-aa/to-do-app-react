@@ -39,8 +39,6 @@ function Overdue() {
     return null;
   }
 
-  console.log(getOverdueTasks(taskContext));
-
   return (
     <div className="overdueContainer">
       <h2>Overdue tasks</h2>
@@ -61,4 +59,4 @@ function Overdue() {
   );
 }
 
-export { Overdue };
+export { Overdue, getOverdueTasks };
