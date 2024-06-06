@@ -98,7 +98,9 @@ function DisplayTasks(props) {
               defaultChecked={props.taskCompleted}
               onChange={handleCompleteClick}
             ></input>
-            <div className="displayTaskName">{props.taskName}</div>
+            <div className="displayTaskName">
+              <b>{props.taskName}</b>
+            </div>
           </div>
           <button
             className="dropdownButton"
@@ -109,8 +111,18 @@ function DisplayTasks(props) {
         </div>
         <div className={`taskDetails ${detailShow}`}>
           <div className="displayTaskDesc">{props.taskDesc}</div>
-          <div className="displayTaskDue">{props.taskDate}</div>
-          <div className="displayTaskPrio">{props.taskPrio}</div>
+
+          <div className="dueDateAndPrio">
+            <div>
+              <b>Due date:</b>
+            </div>
+            <div className="displayTaskDue">{props.taskDate}</div>
+            <div>
+              <b>Priority:</b>
+            </div>
+            <div className="displayTaskPrio">{props.taskPrio}</div>
+          </div>
+          <hr />
         </div>
       </div>
     </div>

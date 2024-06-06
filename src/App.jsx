@@ -144,9 +144,6 @@ function App() {
     activeId: currentList[0].listId,
   });
 
-  // this is a helper for setting states back
-  const [displayHelperState, setDisplayHelperState] = useState(null);
-
   // state for selecting which window to display deepnding on what is being selected.
   // 1 = welcome window, 2 = upcoming, 3 = today, 4 = overdue, 5 = display list items
   const [mainWindow, setMainWindow] = useState("1");
@@ -174,8 +171,6 @@ function App() {
           setActiveList,
           mainWindow,
           setMainWindow,
-          displayHelperState,
-          setDisplayHelperState,
         }}
       >
         <div className="mainStuff">

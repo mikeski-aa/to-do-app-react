@@ -9,8 +9,7 @@
 }
 
 .detailShow {
-  background-color: rgb(106, 106, 184);
-  max-height: 4em;
+  max-height: 10rem;
 }
 
 .taskDetails {
@@ -53,9 +52,26 @@
   display: flex;
 }
 
-.displayTask,
-.upcomingTasksMain {
+.displayIncompleteTask,
+.displayCompleteTask,
+.upcomingTasksMain,
+.todayTasksIncomplete,
+.todayTasksComplete {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
+}
+
+.dueDateAndPrio {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.taskDetails {
+  padding-left: 10px;
+}
+
+.upcomingButtonsTopContainer {
+  display: flex;
+  gap: 0.6rem;
 }

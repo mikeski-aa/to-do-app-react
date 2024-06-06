@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { TaskContext } from "../App";
 import { DisplayTasks } from "./DisplayTasks";
+import { getCompleteTaskList, getIncompleteTaskList } from "./utils";
 
 // function to find out what tasks are overdue
 // need to use similar function to the one in the upcoming component
@@ -43,7 +44,20 @@ function Overdue() {
     <div className="overdueContainer">
       <h2>Overdue tasks</h2>
       <div className="displayOverdueTasks">
-        {getOverdueTasks(taskContext).map((task) => (
+        {getIncompleteTaskList(getOverdueTasks(taskContext)).map((task) => (
+          <DisplayTasks
+            taskName={task.taskName}
+            taskDesc={task.taskDesc}
+            taskDate={task.taskDate}
+            taskPrio={task.taskPrio}
+            taskId={task.taskId}
+            taskCompleted={task.taskCompleted}
+            key={task.taskId}
+          />
+        ))}
+      </div>
+      <div className="displayOverdueTasks">
+        {getCompleteTaskList(getOverdueTasks(taskContext)).map((task) => (
           <DisplayTasks
             taskName={task.taskName}
             taskDesc={task.taskDesc}

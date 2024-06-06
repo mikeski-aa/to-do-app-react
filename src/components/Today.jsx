@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { TaskContext } from "../App";
 import { DisplayTasks } from "./DisplayTasks";
+import { getCompleteTaskList, getIncompleteTaskList } from "./utils";
 
 // date needs to be in YYYY-MM-DD to easily compare with current date stored in tasks
 function getTodayDate() {
@@ -33,8 +34,21 @@ function Today() {
   return (
     <div className="todayContainer">
       <h2> Today's tasks </h2>
-      <div className="todayTasks">
-        {tempListArray.map((task) => (
+      <div className="todayTasksIncomplete">
+        {getIncompleteTaskList(tempListArray).map((task) => (
+          <DisplayTasks
+            taskName={task.taskName}
+            taskDesc={task.taskDesc}
+            taskDate={task.taskDate}
+            taskPrio={task.taskPrio}
+            taskId={task.taskId}
+            taskCompleted={task.taskCompleted}
+            key={task.taskId}
+          />
+        ))}
+      </div>
+      <div className="todayTasksComplete">
+        {getCompleteTaskList(tempListArray).map((task) => (
           <DisplayTasks
             taskName={task.taskName}
             taskDesc={task.taskDesc}

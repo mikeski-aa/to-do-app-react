@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { TaskContext } from "../App";
 import { DisplayTasks } from "./DisplayTasks";
+import { getCompleteTaskList, getIncompleteTaskList } from "./utils";
 
 //   date.setDate(date.getDate() + 30);
 
@@ -54,11 +55,16 @@ function Upcoming() {
   return (
     <div className="upcomingTaskContainer">
       <h2>Upcoming tasks - next {upcomingValue} days</h2>
-      <button onClick={setUpcomingThree}>Next 3 days</button>
-      <button onClick={setUpcomingFive}>Next 5 days</button>
-      <button onClick={setUpcomingSeven}>Next 7 days</button>
+      <div className="upcomingButtonsTopContainer">
+        <button onClick={setUpcomingThree}>Next 3 days</button>
+        <button onClick={setUpcomingFive}>Next 5 days</button>
+        <button onClick={setUpcomingSeven}>Next 7 days</button>
+      </div>
+
       <div className="upcomingTasksMain">
-        {getUpcomingTasks(taskContext, upcomingValue).map((task) => (
+        {getIncompleteTaskList(
+          getUpcomingTasks(taskContext, upcomingValue)
+        ).map((task) => (
           <DisplayTasks
             taskName={task.taskName}
             taskDesc={task.taskDesc}
@@ -69,6 +75,21 @@ function Upcoming() {
             key={task.taskId}
           />
         ))}
+      </div>
+      <div className="upcomingTasksMain">
+        {getCompleteTaskList(getUpcomingTasks(taskContext, upcomingValue)).map(
+          (task) => (
+            <DisplayTasks
+              taskName={task.taskName}
+              taskDesc={task.taskDesc}
+              taskDate={task.taskDate}
+              taskPrio={task.taskPrio}
+              taskId={task.taskId}
+              taskCompleted={task.taskCompleted}
+              key={task.taskId}
+            />
+          )
+        )}
       </div>
     </div>
   );

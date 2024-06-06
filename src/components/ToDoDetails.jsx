@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { TaskContext } from "../App";
 import { v4 as uuidv4 } from "uuid";
 import { DisplayTasks } from "./DisplayTasks";
+import { getCompleteTaskList, getIncompleteTaskList } from "./utils";
 
 // responsible for opening a div for adding new state
 // this cannot open if edit task is already opened!
@@ -33,10 +34,24 @@ function ToDoItems() {
 
   return (
     <div className="currentTasks">
-      <h1>{taskContext.activeList.activeName}</h1>
+      <h2>{taskContext.activeList.activeName}</h2>
       <button onClick={() => newTaskHandler(taskContext)}>New Task</button>
-      <div className="displayTask">
-        {tempListArray.map((task) => (
+      <div className="displayIncompleteTask">
+        {getIncompleteTaskList(tempListArray).map((task) => (
+          <DisplayTasks
+            taskName={task.taskName}
+            taskDesc={task.taskDesc}
+            taskDate={task.taskDate}
+            taskPrio={task.taskPrio}
+            taskId={task.taskId}
+            taskCompleted={task.taskCompleted}
+            taskDetailShow={task.taskDetailShow}
+            key={task.taskId}
+          />
+        ))}
+      </div>
+      <div className="displayCompleteTask">
+        {getCompleteTaskList(tempListArray).map((task) => (
           <DisplayTasks
             taskName={task.taskName}
             taskDesc={task.taskDesc}
