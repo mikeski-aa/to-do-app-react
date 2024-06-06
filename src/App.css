@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  background-color: #fbf9f1;
 }
 
 .mainStuff {
@@ -48,7 +49,8 @@ button {
 .overdueContainer,
 .todaycontainer,
 .upcomingTaskContainer,
-.todayContainer {
+.todayContainer,
+.welcomeScreen {
   padding-left: 10px;
   padding-right: 10px;
 }

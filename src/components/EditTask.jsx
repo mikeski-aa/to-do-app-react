@@ -92,78 +92,91 @@ function EditTask() {
 
   return (
     <div className="editTask">
-      <div className="taskName">
-        <label>Task Title</label>
-        <input
-          type="text"
-          className="nameInput"
-          value={taskContext.tempTask.taskName}
-          onChange={(e) => handleEditName(e, taskContext)}
-        />
-      </div>
+      <h2>Edit task</h2>
+      <div className="editNewTaskContainer">
+        <div className="taskName">
+          <label>
+            <b>Task Title</b>
+          </label>
+          <input
+            type="text"
+            className="nameInput"
+            value={taskContext.tempTask.taskName}
+            onChange={(e) => handleEditName(e, taskContext)}
+          />
+        </div>
 
-      <div className="taskDesc">
-        <label>Task Description</label>
-        <textarea
-          className="detailsInput"
-          value={taskContext.tempTask.taskDesc}
-          onChange={(e) => handleEditDesc(e, taskContext)}
-        />
-      </div>
+        <div className="taskDesc">
+          <label>
+            <b>Task Description</b>
+          </label>
+          <textarea
+            className="detailsInput"
+            value={taskContext.tempTask.taskDesc}
+            onChange={(e) => handleEditDesc(e, taskContext)}
+          />
+        </div>
 
-      <div className="dueDate">
-        <label>Due date</label>
-        <input
-          type="date"
-          className="dateInput"
-          value={taskContext.tempTask.taskDate}
-          onChange={(e) => handleEditDate(e, taskContext)}
-        />
-      </div>
+        <div className="dueDate">
+          <label>
+            <b>Due date</b>
+          </label>
+          <input
+            type="date"
+            className="dateInput"
+            value={taskContext.tempTask.taskDate}
+            onChange={(e) => handleEditDate(e, taskContext)}
+          />
+        </div>
 
-      <div className="taskPrio">
-        <label>Task Prio</label>
-        <select
-          className="prioInput"
-          onChange={(e) => handleEditDropdown(e, taskContext)}
-          value={taskContext.tempTask.taskPrio}
-        >
-          <option value="0">-- Choose Priority --</option>
-          <option value="1">Low</option>
-          <option value="2">Medium</option>
-          <option value="3">High</option>
-        </select>
-      </div>
+        <div className="taskPrio">
+          <label>
+            <b>Task Prio</b>
+          </label>
+          <select
+            className="prioInput"
+            onChange={(e) => handleEditDropdown(e, taskContext)}
+            value={taskContext.tempTask.taskPrio}
+          >
+            <option value="0">-- Choose Priority --</option>
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+          </select>
+        </div>
 
-      <div className="taskList">
-        <label>Task list</label>
-        <select
-          className="listInput"
-          onChange={(e) => handleListDropdown(e, taskContext)}
-          defaultValue={taskContext.activeList.listId}
-        >
-          <option>--Please select a list--</option>
-          {taskContext.currentList.map((item) => (
-            <option value={item.listName} key={item.listId}>
-              {item.listName}
-            </option>
-          ))}
-        </select>
-      </div>
+        <div className="taskList">
+          <label>
+            <b>Task list</b>
+          </label>
+          <select
+            className="listInput"
+            onChange={(e) => handleListDropdown(e, taskContext)}
+            defaultValue={taskContext.activeList.listId}
+          >
+            <option>--Please select a list--</option>
+            {taskContext.currentList.map((item) => (
+              <option value={item.listName} key={item.listId}>
+                {item.listName}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <div className="newTaskButtons">
-        <button
-          className="deleteTask"
-          onClick={() => handleDeleteClick(taskContext)}
-        >
-          Delete
-        </button>
-        <button
-          className="saveNewTask"
-          onClick={() => handleSaveClick(taskContext)}
-        >
-          Save task
-        </button>
+        <div className="newTaskButtons">
+          <button
+            className="deleteTask"
+            onClick={() => handleDeleteClick(taskContext)}
+          >
+            Delete
+          </button>
+          <button
+            className="saveNewTask"
+            onClick={() => handleSaveClick(taskContext)}
+          >
+            Save task
+          </button>
+        </div>
       </div>
     </div>
   );

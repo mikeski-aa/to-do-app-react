@@ -1,0 +1,45 @@
+.dueDate,
+.taskPrio,
+.taskList {
+  display: flex;
+  flex-direction: column;
+}
+
+.createNewTask,
+.editTask {
+  background-color: #f7eedd;
+  height: 90vh;
+  border-radius: 12px 0px 0px 12px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.addNewTaskContainer,
+.editNewTaskContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-content: right;
+}
+
+.nameInput,
+.detailsInput,
+.prioInput,
+.listInput,
+.dateInput {
+  width: 75%;
+}
+
+.newTaskButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancelNewTask {
+  --c: #e95a49;
+}
