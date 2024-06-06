@@ -13,6 +13,11 @@ import "./App.css";
 export const TaskContext = createContext();
 
 function App() {
+  // for date setting for the initial tasks to be displayed
+  let todayDate = new Date();
+  todayDate = todayDate.toISOString().split("T")[0];
+  console.log(todayDate);
+
   // placeholder list to show on startup and for testing
   // this is where all of the lists live with their associated IDs
   const [currentList, setCurrentList] = useState([
@@ -69,7 +74,7 @@ function App() {
       taskId: "15351355416",
       taskName: "Today task",
       taskDesc: "Placeholder Desc",
-      taskDate: "2024-06-05",
+      taskDate: todayDate,
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
@@ -78,7 +83,7 @@ function App() {
       taskId: "15351355412",
       taskName: "Today Task",
       taskDesc: "Placeholder Desc",
-      taskDate: "2024-06-05",
+      taskDate: todayDate,
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",

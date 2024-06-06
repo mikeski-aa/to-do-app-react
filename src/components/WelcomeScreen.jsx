@@ -16,7 +16,9 @@ function WelcomeScreen() {
         <h2>Welcome to to do app</h2>
       </div>
 
-      <div>You current have: x active tasks</div>
+      <div>
+        You current have: {taskContext.currentTasks.length} active tasks
+      </div>
     </div>
   );
 }
