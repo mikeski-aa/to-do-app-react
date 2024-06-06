@@ -1,0 +1,24 @@
+.navBar {
+  background-color: #f7eedd;
+  height: 90vh;
+  border-radius: 0px 12px 12px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mainNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.lists {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.addNewListItemBtn {
+  width: 35%;
+}

@@ -21,6 +21,7 @@
 .markDone {
   background-color: grey;
   opacity: 0.5;
+  border-radius: 12px;
 }
 
 .task {
@@ -46,8 +47,15 @@
 .taskHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .checkAndTitle {
   display: flex;
+}
+
+.displayTask {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
 }

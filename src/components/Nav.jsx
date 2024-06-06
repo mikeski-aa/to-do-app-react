@@ -3,25 +3,11 @@ import { TaskContext } from "../App";
 import { ListButton } from "./ListButton";
 import { v4 as uuidv4 } from "uuid";
 import { AddNewList } from "./AddNewList";
+import "../styles/Nav.css";
 
 // navigation bar
 // here, we want to give user the option to select which task folder they would like to see
 // perhaps add other functionality like see today's tasks, or upcoming tasks?
-
-// tempTask,
-// setTempTask,
-// currentTasks,
-// setCurrentTasks,
-// addNewTask,
-// setNewTask,
-// editTask,
-// setEditTask,
-// currentList,
-// setCurrentList,
-// showAddNewList,
-// setShowNewList,
-// tempListName,
-// setTempListName,
 
 function Nav() {
   const taskContext = useContext(TaskContext);
@@ -50,35 +36,39 @@ function Nav() {
 
   return (
     <div className="navBar">
-      <div className="header">
-        <h2>Menu</h2>
-      </div>
-      <div className="tasks">
-        Tasks
-        <div className="upcomingTasks" onClick={handleOpenUpcoming}>
-          <button>Upcoming</button>
+      <div className="mainNav">
+        <div className="header">
+          <h2>Menu</h2>
         </div>
-        <div className="todayTask">
-          <button onClick={handleOpenToday}>Today</button>
+        <div className="tasks">
+          Tasks
+          <div className="upcomingTasks" onClick={handleOpenUpcoming}>
+            <button>Upcoming</button>
+          </div>
+          <div className="todayTask">
+            <button onClick={handleOpenToday}>Today</button>
+          </div>
+          <div className="overdueTask">
+            <button onClick={handleOpenOverdue}>Overdue</button>
+          </div>
         </div>
-        <div className="overdueTask">
-          <button onClick={handleOpenOverdue}>Overdue</button>
-        </div>
-      </div>
 
-      <div className="lists">
-        <div className="currentLists">
-          Your Lists
-          {taskContext.currentList.map((item) => (
-            <ListButton
-              listName={item.listName}
-              key={item.listId}
-              listId={item.listId}
-            />
-          ))}
+        <div className="lists">
+          <div className="currentLists">
+            Your Lists
+            {taskContext.currentList.map((item) => (
+              <ListButton
+                listName={item.listName}
+                key={item.listId}
+                listId={item.listId}
+              />
+            ))}
+          </div>
+          <button className="addNewListItemBtn" onClick={handleOpenNewList}>
+            Add New List
+          </button>
+          <AddNewList />
         </div>
-        <button onClick={handleOpenNewList}>Add New List</button>
-        <AddNewList />
       </div>
 
       <div className="about">

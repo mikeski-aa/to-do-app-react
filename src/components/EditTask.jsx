@@ -153,7 +153,7 @@ function EditTask() {
 
       <div className="newTaskButtons">
         <button
-          className="cancelNewTask"
+          className="deleteTask"
           onClick={() => handleDeleteClick(taskContext)}
         >
           Delete
