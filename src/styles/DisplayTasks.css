@@ -4,18 +4,17 @@
 
 .detailHide {
   background-color: aquamarine;
-  transform: scaleY(0);
-  height: 0;
+  opacity: 0;
+  max-height: 0;
 }
 
 .detailShow {
   background-color: rgb(106, 106, 184);
-  height: 100%;
-  transform: scaleY(1);
+  max-height: 4em;
 }
 
 .taskDetails {
-  transition: 1s ease-in-out;
+  transition: 1s cubic-bezier(1, 1, 1, 1);
 }
 
 .markDone {
