@@ -54,9 +54,12 @@
 
 .displayIncompleteTask,
 .displayCompleteTask,
-.upcomingTasksMain,
+.upcomingTasksComplete,
+.upcomingTasksIncomplete,
 .todayTasksIncomplete,
-.todayTasksComplete {
+.todayTasksComplete,
+.displayOverdueIncomplete,
+.displayOverdueComplete {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;

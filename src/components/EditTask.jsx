@@ -35,7 +35,6 @@ function handleListDropdown(e, taskContext) {
   let tempId = taskContext.currentList.filter(
     (item) => item.listName === e.target.value
   )[0].listId;
-  console.log(tempId);
   taskContext.setTempTask({ ...taskContext.tempTask, taskBelongTo: tempId });
 }
 

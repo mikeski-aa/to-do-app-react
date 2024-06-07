@@ -42,10 +42,6 @@ function handleDropdownListChange(e, state) {
 function handleSaveClick(state) {
   let tempTask = state.tempTask;
 
-  console.log("This task belong to this ID");
-  console.log(state.tempTask.taskBelongTo);
-
-  console.log(tempTask);
   state.setCurrentTasks([...state.currentTasks, tempTask]);
   state.setTempTask({
     taskId: "",
@@ -78,13 +74,14 @@ function handleCancelClick(state) {
 // cancel will clear the tempState and close the modal
 function CreateNewTask() {
   const taskContext = useContext(TaskContext);
+  let newTab;
 
   if (taskContext.addNewTask === false) {
     return null;
   }
 
   return (
-    <div className="createNewTask">
+    <div className={`createNewTask ${newTab}`}>
       <h2>Add new task</h2>
       <div className="addNewTaskContainer">
         <div className="taskName">

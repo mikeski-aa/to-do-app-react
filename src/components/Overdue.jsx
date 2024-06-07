@@ -16,8 +16,6 @@ function dateDifference(inputDate) {
 
   let result = isBefore ? -diffDays : diffDays;
 
-  console.log("diff result is");
-  console.log(result);
   return result;
 }
 
@@ -43,7 +41,7 @@ function Overdue() {
   return (
     <div className="overdueContainer">
       <h2>Overdue tasks</h2>
-      <div className="displayOverdueTasks">
+      <div className="displayOverdueIncomplete">
         {getIncompleteTaskList(getOverdueTasks(taskContext)).map((task) => (
           <DisplayTasks
             taskName={task.taskName}
@@ -52,13 +50,13 @@ function Overdue() {
             taskPrio={task.taskPrio}
             taskId={task.taskId}
             taskCompleted={task.taskCompleted}
-            tasktaskDetailShow={task.taskDetailShow}
+            taskDetailShow={task.taskDetailShow}
             key={task.taskId}
           />
         ))}
       </div>
       <hr></hr>
-      <div className="displayOverdueTasks">
+      <div className="displayOverdueComplete">
         {getCompleteTaskList(getOverdueTasks(taskContext)).map((task) => (
           <DisplayTasks
             taskName={task.taskName}

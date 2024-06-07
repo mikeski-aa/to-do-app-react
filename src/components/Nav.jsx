@@ -26,13 +26,11 @@ function Nav() {
     taskContext.setEditTask(false);
     taskContext.setNewTask(false);
     resetAllDisplayStates(taskContext);
-    console.log(taskContext.currentTasks);
     taskContext.setTempListName({
       ...taskContext.tempListName,
       listId: uuidv4(),
     });
     taskContext.setShowNewList(true);
-    console.log(taskContext.tempListName);
   };
 
   const handleOpenToday = () => {

@@ -17,7 +17,6 @@ function App() {
   // for date setting for the initial tasks to be displayed
   let todayDate = new Date();
   todayDate = todayDate.toISOString().split("T")[0];
-  console.log(todayDate);
 
   // placeholder list to show on startup and for testing
   // this is where all of the lists live with their associated IDs
@@ -186,7 +185,7 @@ function App() {
           <Today />
           <Upcoming />
           <Overdue />
-          <CreateNewTask />
+          {/* <CreateNewTask /> */}
           <EditTask />
         </div>
       </TaskContext.Provider>

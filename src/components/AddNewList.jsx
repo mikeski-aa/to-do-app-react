@@ -19,15 +19,12 @@ function AddNewList() {
   const handleSaveList = () => {
     let tempList = taskContext.tempListName;
 
-    console.log(tempList);
     taskContext.setCurrentList([...taskContext.currentList, tempList]);
     taskContext.setShowNewList(false);
-    console.log(taskContext.currentList);
   };
 
   // reset temp and close input
   const handleCancelList = () => {
-    console.log(taskContext.tempListName);
     taskContext.setTempListName({ listName: "", listId: "" });
     taskContext.setShowNewList(false);
   };

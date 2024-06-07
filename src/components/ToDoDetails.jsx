@@ -3,6 +3,7 @@ import { TaskContext } from "../App";
 import { v4 as uuidv4 } from "uuid";
 import { DisplayTasks } from "./DisplayTasks";
 import { getCompleteTaskList, getIncompleteTaskList } from "./utils";
+import { CreateNewTask } from "./NewTaskModal";
 
 // responsible for opening a div for adding new state
 // this cannot open if edit task is already opened!
@@ -36,6 +37,9 @@ function ToDoItems() {
     <div className="currentTasks">
       <h2>{taskContext.activeList.activeName}</h2>
       <button onClick={() => newTaskHandler(taskContext)}>New Task</button>
+      <div>
+        <CreateNewTask />
+      </div>
       <div className="displayIncompleteTask">
         {getIncompleteTaskList(tempListArray).map((task) => (
           <DisplayTasks
