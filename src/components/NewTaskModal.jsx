@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TaskContext } from "../App";
 import "../styles/AddTask.css";
 
@@ -27,7 +27,8 @@ function handleDropdownPrioChange(e, state) {
   state.setTempTask({ ...state.tempTask, taskPrio: e.target.value });
 }
 
-function handleDropdownListChange(e, state) {
+function handleDropdownListChange(e, state, setSelectList) {
+  setSelectList(true);
   let tempId = state.currentList.filter(
     (item) => item.listName === e.target.value
   )[0].listId;
@@ -37,7 +38,11 @@ function handleDropdownListChange(e, state) {
 // submit will add the new task to the currentTasks state, it will also reset temp state.
 // additionally, the newTask open state is set to close, to hide the form
 
-function handleSaveClick(state) {
+function handleSaveClick(state, listClicked, setListClicked) {
+  if (listClicked === false) {
+    return alert("You must select a list item!");
+  }
+
   let tempTask = state.tempTask;
 
   state.setCurrentTasks([...state.currentTasks, tempTask]);
@@ -47,15 +52,17 @@ function handleSaveClick(state) {
     taskDesc: "",
     taskDate: "",
     taskPrio: "1",
-    taskBelongTo: "",
+    taskCompleted: false,
+    taskBelongTo: state.activeList.activeId,
     taskDetailShow: false,
   });
   console.log(state.currentTasks);
   state.setNewTask(false);
+  setListClicked(false);
 }
 
 // function for handling cancel click + resetting the temp holder
-function handleCancelClick(state) {
+function handleCancelClick(state, setListState) {
   state.setTempTask({
     taskId: "",
     taskName: "",
@@ -66,11 +73,13 @@ function handleCancelClick(state) {
     taskDetailShow: false,
   });
   state.setNewTask(false);
+  setListState(false);
 }
 
 // function takes care of creating a new task
 // cancel will clear the tempState and close the modal
 function CreateNewTask() {
+  const [selectList, setSelectList] = useState(false);
   const taskContext = useContext(TaskContext);
   let newTab;
 
@@ -141,11 +150,12 @@ function CreateNewTask() {
             </label>
             <select
               className="newListInput"
-              onChange={(e) => handleDropdownListChange(e, taskContext)}
-              defaultValue={taskContext.activeList.listId}
-              value={taskContext.activeList.listId}
+              onChange={(e) =>
+                handleDropdownListChange(e, taskContext, setSelectList)
+              }
+              defaultValue="0"
             >
-              <option>--Please select a list--</option>
+              <option vake="0">--Please select a list--</option>
               {taskContext.currentList.map((item) => (
                 <option value={item.listName} key={item.listId}>
                   {item.listName}
@@ -157,13 +167,15 @@ function CreateNewTask() {
         <div className="newTaskButtons">
           <button
             className="cancelNewTask"
-            onClick={() => handleCancelClick(taskContext)}
+            onClick={() => handleCancelClick(taskContext, setSelectList)}
           >
             Cancel
           </button>
           <button
             className="saveNewTask"
-            onClick={() => handleSaveClick(taskContext)}
+            onClick={() =>
+              handleSaveClick(taskContext, selectList, setSelectList)
+            }
           >
             Save task
           </button>
