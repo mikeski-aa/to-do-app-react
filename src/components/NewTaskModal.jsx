@@ -39,9 +39,9 @@ function handleDropdownListChange(e, state, setSelectList) {
 // additionally, the newTask open state is set to close, to hide the form
 
 function handleSaveClick(state, listClicked, setListClicked) {
-  if (listClicked === false) {
-    return alert("You must select a list item!");
-  }
+  // if (listClicked === false) {
+  //   return alert("You must select a list item!");
+  // }
 
   let tempTask = state.tempTask;
 
@@ -57,6 +57,7 @@ function handleSaveClick(state, listClicked, setListClicked) {
     taskDetailShow: false,
   });
   console.log(state.currentTasks);
+  console.log(state.tempTask);
   state.setNewTask(false);
   setListClicked(false);
 }
@@ -69,7 +70,8 @@ function handleCancelClick(state, setListState) {
     taskDesc: "",
     taskDate: "",
     taskPrio: "1",
-    taskBelongTo: "",
+    taskCompleted: false,
+    taskBelongTo: state.activeList.activeId,
     taskDetailShow: false,
   });
   state.setNewTask(false);
@@ -103,6 +105,7 @@ function CreateNewTask() {
                 type="text"
                 className="newNameInput"
                 onChange={(e) => handleNewInputName(e, taskContext)}
+                value={taskContext.tempTask.taskName}
               />
             </div>
 
@@ -113,6 +116,7 @@ function CreateNewTask() {
               <textarea
                 className="newDetailsInput"
                 onChange={(e) => handleNewInputDesc(e, taskContext)}
+                value={taskContext.tempTask.taskDesc}
               />
             </div>
           </div>
@@ -125,6 +129,7 @@ function CreateNewTask() {
                 type="date"
                 className="newDateInput"
                 onChange={(e) => handleNewInputDate(e, taskContext)}
+                value={taskContext.tempTask.taskDate}
               />
             </div>
 
@@ -153,7 +158,7 @@ function CreateNewTask() {
               onChange={(e) =>
                 handleDropdownListChange(e, taskContext, setSelectList)
               }
-              defaultValue="0"
+              value={taskContext.tempTask.taskBelongTo}
             >
               <option vake="0">--Please select a list--</option>
               {taskContext.currentList.map((item) => (

@@ -8,6 +8,7 @@ import { CreateNewTask } from "./NewTaskModal";
 // responsible for opening a div for adding new state
 // this cannot open if edit task is already opened!
 function newTaskHandler(state) {
+  console.log(state.tempTask);
   state.setTempTask({
     ...state.tempTask,
     taskName: "",
