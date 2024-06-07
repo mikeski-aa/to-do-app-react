@@ -58,3 +58,7 @@ button {
 .test {
   display: flex;
 }
+
+.titleOfPage {
+  padding-left: 10px;
+}

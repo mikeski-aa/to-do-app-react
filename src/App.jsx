@@ -9,14 +9,15 @@ import { Today } from "./components/Today";
 import { Upcoming } from "./components/Upcoming";
 import { Overdue } from "./components/Overdue";
 import { Settings } from "./components/Settings";
+import { getPlaceholderTaskState } from "./components/placeholderValues";
 import "./App.css";
 
 export const TaskContext = createContext();
 
 function App() {
   // for date setting for the initial tasks to be displayed
-  let todayDate = new Date();
-  todayDate = todayDate.toISOString().split("T")[0];
+
+  console.log(getPlaceholderTaskState());
 
   // placeholder list to show on startup and for testing
   // this is where all of the lists live with their associated IDs
@@ -43,88 +44,7 @@ function App() {
   // this is where all the tasks live - one large state.
   // is this the best solution? IDK.
   // date format has to be in YYYY-MM-DD for date input to work
-  const [currentTasks, setCurrentTasks] = useState([
-    {
-      taskId: "15351355",
-      taskName: "Placeholder Name",
-      taskDesc: "Placeholder Desc",
-      taskDate: "2024-01-01",
-      taskPrio: "3",
-      taskCompleted: false,
-      taskBelongTo: "jhasd7861j",
-      taskDetailShow: false,
-    },
-    {
-      taskId: "153513535",
-      taskName: "Overdue task",
-      taskDesc: "Placeholder Desc",
-      taskDate: "2024-01-01",
-      taskPrio: "3",
-      taskCompleted: false,
-      taskBelongTo: "jhasd7861j",
-      taskDetailShow: false,
-    },
-    {
-      taskId: "15351355433",
-      taskName: "Another overdue task",
-      taskDesc: "Placeholder Desc",
-      taskDate: "2022-12-13",
-      taskPrio: "3",
-      taskCompleted: false,
-      taskBelongTo: "jhasd7861j",
-      taskDetailShow: false,
-    },
-    {
-      taskId: "15351355416",
-      taskName: "Today task",
-      taskDesc: "Placeholder Desc",
-      taskDate: todayDate,
-      taskPrio: "3",
-      taskCompleted: false,
-      taskBelongTo: "jhasd7861j",
-      taskDetailShow: false,
-    },
-    {
-      taskId: "15351355412",
-      taskName: "Today Task",
-      taskDesc: "Placeholder Desc",
-      taskDate: todayDate,
-      taskPrio: "3",
-      taskCompleted: false,
-      taskBelongTo: "jhasd7861j",
-      taskDetailShow: false,
-    },
-    {
-      taskId: "1535135541222",
-      taskName: "Upcoming + 5",
-      taskDesc: "Placeholder Desc",
-      taskDate: "2024-06-10",
-      taskPrio: "1",
-      taskCompleted: false,
-      taskBelongTo: "jhasd7861j",
-      taskDetailShow: false,
-    },
-    {
-      taskId: "1535135541233",
-      taskName: "Upcoming + 4",
-      taskDesc: "Placeholder Desc",
-      taskDate: "2024-06-09",
-      taskPrio: "2",
-      taskCompleted: false,
-      taskBelongTo: "jhasd7861j",
-      taskDetailShow: false,
-    },
-    {
-      taskId: "1535135541233390",
-      taskName: "Upcoming + 7",
-      taskDesc: "Placeholder Desc",
-      taskDate: "2024-06-12",
-      taskPrio: "1",
-      taskCompleted: false,
-      taskBelongTo: "jhasd7861j",
-      taskDetailShow: false,
-    },
-  ]);
+  const [currentTasks, setCurrentTasks] = useState(getPlaceholderTaskState());
   // state to control visibility of add new task section
   const [addNewTask, setNewTask] = useState(false);
   // state to control visibility of edit task section
@@ -156,7 +76,7 @@ function App() {
 
   return (
     <>
-      <h1>To do app</h1>
+      <h1 className="titleOfPage">To do app</h1>
 
       <TaskContext.Provider
         value={{

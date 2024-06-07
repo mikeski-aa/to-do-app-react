@@ -3,8 +3,6 @@ import { TaskContext } from "../App";
 import { DisplayTasks } from "./DisplayTasks";
 import { getCompleteTaskList, getIncompleteTaskList } from "./utils";
 
-//   date.setDate(date.getDate() + 30);
-
 // helper function to get the future date
 // function was lifted from stackOverflow
 // date input must be in YYYY-MM-DD format, should work with existing date format in tasks
@@ -21,7 +19,8 @@ function futureDate(inputDate) {
 function getUpcomingTasks(taskContext, upcomingState) {
   let tempHolder = [...taskContext.currentTasks];
   let purgedArray = tempHolder.filter(
-    (item) => futureDate(item.taskDate) < upcomingState
+    (item) =>
+      futureDate(item.taskDate) < upcomingState && futureDate(item.taskDate) > 0
   );
 
   return purgedArray;
