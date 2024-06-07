@@ -41,7 +41,7 @@ function getPlaceholderTaskState() {
     },
     {
       taskId: "15351355416",
-      taskName: "Today task",
+      taskName: "Today task number one",
       taskDesc: "Buy groceries",
       taskDate: getPlusXdays(0),
       taskPrio: "3",
@@ -51,7 +51,7 @@ function getPlaceholderTaskState() {
     },
     {
       taskId: "15351355412",
-      taskName: "Today Task",
+      taskName: "Today Task number two",
       taskDesc: "Clean the house",
       taskDate: getPlusXdays(0),
       taskPrio: "3",
@@ -61,7 +61,7 @@ function getPlaceholderTaskState() {
     },
     {
       taskId: "1535135541222",
-      taskName: "Upcoming + 5",
+      taskName: "Upcoming + 5 days",
       taskDesc: "This task is coming up in the next 5 days!",
       taskDate: getPlusXdays(5),
       taskPrio: "1",
@@ -71,7 +71,7 @@ function getPlaceholderTaskState() {
     },
     {
       taskId: "1535135541233",
-      taskName: "Upcoming + 3",
+      taskName: "Upcoming + 3 days",
       taskDesc: "This task is coming up in the next 3 days!",
       taskDate: getPlusXdays(3),
       taskPrio: "2",
@@ -81,7 +81,7 @@ function getPlaceholderTaskState() {
     },
     {
       taskId: "1535135541233390",
-      taskName: "Upcoming + 7",
+      taskName: "Upcoming + 7 days",
       taskDesc: "This task is coming up in the next 7 days!",
       taskDate: getPlusXdays(7),
       taskPrio: "1",

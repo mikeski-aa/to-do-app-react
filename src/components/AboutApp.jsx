@@ -23,18 +23,20 @@ function AboutApp() {
       <div className="aboutAppBox">
         <h2 className="aboutHeading">
           <b>About app</b>
+          <hr></hr>
         </h2>
         <div className="mainAboutContent">
           <div>
             <p>App written with React</p>
             <p>
-              <b>Button design:</b> Temani Afif &nbsp;
+              <b className="aboutText">Button design:</b> Temani Afif &nbsp;
               <a href="https://codepen.io/t_afif/pen/abKyJNJ" target="_blank">
                 (link to button Codepen CSS)
               </a>
             </p>
+
             <div className="myLink">
-              <b>My Github</b> &nbsp; &nbsp;
+              <b className="aboutText">My Github:</b> &nbsp; &nbsp;
               <img
                 src={githubIcon}
                 className="githubIconAbout"

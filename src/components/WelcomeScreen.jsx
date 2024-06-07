@@ -13,12 +13,17 @@ function WelcomeScreen() {
   return (
     <div className="welcomeScreen">
       <div>
-        <h2>Welcome to to do app</h2>
+        <h2>Let's get organised!</h2>
       </div>
 
       <div>
-        You current have: {taskContext.currentTasks.length} active tasks
+        You current have: <b>{taskContext.currentTasks.length}</b> active tasks
       </div>
+      <br />
+      <p>
+        You can add a new task by opening up the "Placeholder List".
+        Alternatively, you can create your own list!
+      </p>
     </div>
   );
 }

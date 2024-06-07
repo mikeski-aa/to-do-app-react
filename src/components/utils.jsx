@@ -76,6 +76,12 @@ function checkIfTaskIsDifferent(newId, oldId, openStatus, taskContext) {
     }
   }
 }
+
+// helper function for filtering finished tasks
+function filterFinishedTasks(inputArray) {
+  return inputArray.filter((item) => item.taskCompleted === false);
+}
+
 export {
   getCompleteTaskList,
   getIncompleteTaskList,
@@ -83,4 +89,5 @@ export {
   formatPriorityDisplay,
   formatDate,
   checkIfTaskIsDifferent,
+  filterFinishedTasks,
 };

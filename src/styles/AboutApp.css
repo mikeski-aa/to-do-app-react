@@ -23,6 +23,8 @@
 }
 
 .githubIconAbout {
+  position: relative;
+  left: 25%;
   background-color: black;
   border-color: transparent;
   border-radius: 60%;
@@ -34,9 +36,16 @@
   cursor: pointer;
   transform: rotate(360deg) scale(1.25);
 }
+.aboutHeading {
+  margin: 0;
+}
 
 .myLink {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+}
+
+.aboutText {
+  width: 100px;
 }

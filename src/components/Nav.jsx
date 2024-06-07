@@ -6,7 +6,7 @@ import { AddNewList } from "./AddNewList";
 import { getUpcomingTasks } from "./Upcoming";
 import { todayTasks } from "./Today";
 import { getOverdueTasks } from "./Overdue";
-import { resetAllDisplayStates } from "./utils";
+import { resetAllDisplayStates, filterFinishedTasks } from "./utils";
 import "../styles/Nav.css";
 
 // function to get number of upcoming tasks
@@ -18,9 +18,11 @@ import "../styles/Nav.css";
 function Nav() {
   const taskContext = useContext(TaskContext);
 
-  const upcomingTotal = getUpcomingTasks(taskContext, "7").length;
-  const todayTotal = todayTasks(taskContext).length;
-  const overdueTotal = getOverdueTasks(taskContext).length;
+  const upcomingTotal = filterFinishedTasks(
+    getUpcomingTasks(taskContext, "7")
+  ).length;
+  const todayTotal = filterFinishedTasks(todayTasks(taskContext)).length;
+  const overdueTotal = filterFinishedTasks(getOverdueTasks(taskContext)).length;
 
   const handleOpenNewList = () => {
     taskContext.setEditTask(false);

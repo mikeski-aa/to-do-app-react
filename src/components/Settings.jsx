@@ -27,7 +27,9 @@ function Settings() {
       <div className="settingsBox">
         <h2 className="settingsHeading">
           <b>Settings</b>
+          <hr></hr>
         </h2>
+
         <div>Select date format you'd like to see in your tasks</div>
         <select
           onChange={handleSettingDropdownChange}
