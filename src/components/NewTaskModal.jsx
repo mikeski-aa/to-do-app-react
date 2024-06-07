@@ -27,8 +27,7 @@ function handleDropdownPrioChange(e, state) {
   state.setTempTask({ ...state.tempTask, taskPrio: e.target.value });
 }
 
-function handleDropdownListChange(e, state, setSelectList) {
-  setSelectList(true);
+function handleDropdownListChange(e, state) {
   let tempId = state.currentList.filter(
     (item) => item.listName === e.target.value
   )[0].listId;
@@ -38,11 +37,7 @@ function handleDropdownListChange(e, state, setSelectList) {
 // submit will add the new task to the currentTasks state, it will also reset temp state.
 // additionally, the newTask open state is set to close, to hide the form
 
-function handleSaveClick(state, listClicked, setListClicked) {
-  // if (listClicked === false) {
-  //   return alert("You must select a list item!");
-  // }
-
+function handleSaveClick(state) {
   let tempTask = state.tempTask;
 
   state.setCurrentTasks([...state.currentTasks, tempTask]);
@@ -59,11 +54,10 @@ function handleSaveClick(state, listClicked, setListClicked) {
   console.log(state.currentTasks);
   console.log(state.tempTask);
   state.setNewTask(false);
-  setListClicked(false);
 }
 
 // function for handling cancel click + resetting the temp holder
-function handleCancelClick(state, setListState) {
+function handleCancelClick(state) {
   state.setTempTask({
     taskId: "",
     taskName: "",
@@ -75,13 +69,11 @@ function handleCancelClick(state, setListState) {
     taskDetailShow: false,
   });
   state.setNewTask(false);
-  setListState(false);
 }
 
 // function takes care of creating a new task
 // cancel will clear the tempState and close the modal
 function CreateNewTask() {
-  const [selectList, setSelectList] = useState(false);
   const taskContext = useContext(TaskContext);
   let newTab;
 
@@ -155,9 +147,7 @@ function CreateNewTask() {
             </label>
             <select
               className="newListInput"
-              onChange={(e) =>
-                handleDropdownListChange(e, taskContext, setSelectList)
-              }
+              onChange={(e) => handleDropdownListChange(e, taskContext)}
               value={taskContext.tempTask.taskBelongTo}
             >
               <option vake="0">--Please select a list--</option>
@@ -172,15 +162,13 @@ function CreateNewTask() {
         <div className="newTaskButtons">
           <button
             className="cancelNewTask"
-            onClick={() => handleCancelClick(taskContext, setSelectList)}
+            onClick={() => handleCancelClick(taskContext)}
           >
             Cancel
           </button>
           <button
             className="saveNewTask"
-            onClick={() =>
-              handleSaveClick(taskContext, selectList, setSelectList)
-            }
+            onClick={() => handleSaveClick(taskContext)}
           >
             Save task
           </button>

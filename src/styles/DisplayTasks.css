@@ -3,7 +3,6 @@
 }
 
 .detailHide {
-  background-color: aquamarine;
   opacity: 0;
   max-height: 0;
 }
@@ -30,8 +29,13 @@
   position: relative;
   width: fit-content;
   height: fit-content;
-  background-color: transparent;
+  background-color: none;
   border: 0;
+  outline: 0;
+}
+
+.dropdownButton:hover {
+  cursor: pointer;
 }
 
 .dropdownButtonIcon {
@@ -40,6 +44,10 @@
   left: 0%;
   width: 25px;
   border-radius: 12px;
+}
+
+.taskHeader > .dropdownButton {
+  background: none;
 }
 
 .taskHeader {

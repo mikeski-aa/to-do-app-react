@@ -6,28 +6,33 @@ import {
   resetAllDisplayStates,
   formatPriorityDisplay,
   formatDate,
+  checkIfTaskIsDifferent,
 } from "./utils";
 
 // function for handling editing of individual card
 // this task needs to assign several states -> first state to display the edit card div
 // second state to store the edit card ID
-// if
+
 function handleEditEvent(taskId, taskContext) {
   if (taskContext.addNewTask === true) {
     return alert(
       "Finish adding a new task or cancel it before editing an existing task"
     );
-  } else if (taskContext.editTask === true) {
-    taskContext.setEditTask(false);
-    resetAllDisplayStates(taskContext);
-    return;
+  } else if (taskContext.editTask === false) {
+    console.log("Opening THIS task ID: ");
+    console.log(taskId);
+    console.log(taskContext.tempTask.taskId);
+    changeDetailStatus(taskId, taskContext);
+    taskContext.setEditTask(true);
+    taskContext.setTempTask(getTempTask(taskId, taskContext.currentTasks));
+  } else {
+    checkIfTaskIsDifferent(
+      taskId,
+      taskContext.tempTask.taskId,
+      taskContext.editTask,
+      taskContext
+    );
   }
-
-  changeDetailStatus(taskId, taskContext);
-  taskContext.setEditTask(true);
-  console.log("watch if correct belong to assigned");
-  console.log(getTempTask(taskId, taskContext.currentTasks));
-  taskContext.setTempTask(getTempTask(taskId, taskContext.currentTasks));
 }
 
 // function to change specific task detail status
@@ -90,7 +95,6 @@ function DisplayTasks(props) {
 
   if (props.taskDetailShow === true) {
     detailShow = "detailShow";
-    console.log("detailShow working correctly and assigned");
   } else {
     detailShow = "detailHide";
   }
@@ -110,12 +114,12 @@ function DisplayTasks(props) {
               <b>{props.taskName}</b>
             </div>
           </div>
-          <button
+          <div
             className="dropdownButton"
             onClick={() => handleEditEvent(props.taskId, taskContext)}
           >
             <img src={svg} className="dropdownButtonIcon"></img>
-          </button>
+          </div>
         </div>
         <div className={`taskDetails ${detailShow}`}>
           <div className="displayTaskDesc">{props.taskDesc}</div>

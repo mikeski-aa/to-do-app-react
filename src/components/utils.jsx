@@ -49,10 +49,36 @@ function formatPriorityDisplay(input) {
   }
 }
 
+// function for finding whether new task is the same as old task clicked
+function checkIfTaskIsDifferent(newId, oldId, openStatus, taskContext) {
+  let newTask = newId;
+  let oldTask = oldId;
+
+  if (newTask === oldTask && openStatus == true) {
+    taskContext.setEditTask(false);
+    resetAllDisplayStates(taskContext);
+  } else if (newTask !== oldTask && openStatus == true) {
+    let tempHolder = [...taskContext.currentTasks];
+    tempHolder = tempHolder.filter((item) => item.taskId === newTask)[0];
+    console.log(tempHolder);
+
+    let tempArray = [...taskContext.currentTasks];
+    for (let x = 0; x < tempArray.length; x++) {
+      if (tempArray[x].taskId === oldId) {
+        tempArray[x] = { ...tempArray[x], taskDetailShow: false };
+      } else if (tempArray[x].taskId === newId) {
+        tempArray[x] = { ...tempArray[x], taskDetailShow: true };
+      }
+      taskContext.setCurrentTasks(tempArray);
+      taskContext.setTempTask(tempHolder);
+    }
+  }
+}
 export {
   getCompleteTaskList,
   getIncompleteTaskList,
   resetAllDisplayStates,
   formatPriorityDisplay,
   formatDate,
+  checkIfTaskIsDifferent,
 };
