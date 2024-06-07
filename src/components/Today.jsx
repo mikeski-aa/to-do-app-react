@@ -48,6 +48,7 @@ function Today() {
           />
         ))}
       </div>
+      <hr></hr>
       <div className="todayTasksComplete">
         {getCompleteTaskList(tempListArray).map((task) => (
           <DisplayTasks

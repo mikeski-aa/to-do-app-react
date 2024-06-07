@@ -8,12 +8,19 @@ import { CreateNewTask } from "./NewTaskModal";
 // responsible for opening a div for adding new state
 // this cannot open if edit task is already opened!
 function newTaskHandler(state) {
+  state.setTempTask({
+    ...state.tempTask,
+    taskName: "",
+    taskDesc: "",
+    taskDate: "",
+    taskPrio: "1",
+    taskId: uuidv4(),
+  });
   if (state.editTask === true) {
     return alert("Finish editing your current task before adding a new one!");
   }
 
   if (state.addNewTask === false) {
-    state.setTempTask({ ...state.tempTask, taskId: uuidv4() });
     state.setNewTask(true);
   }
 }
@@ -54,6 +61,7 @@ function ToDoItems() {
           />
         ))}
       </div>
+      <hr></hr>
       <div className="displayCompleteTask">
         {getCompleteTaskList(tempListArray).map((task) => (
           <DisplayTasks

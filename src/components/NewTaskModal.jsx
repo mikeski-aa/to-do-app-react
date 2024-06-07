@@ -20,8 +20,6 @@ function handleNewInputDesc(e, state) {
 // date conversion here is pointless, as you will have to convert it back when editing.
 // what I need to do instead is carry out the date conversion when date is display, with the option to toggle EU or US date format via a toggle w/ a state
 function handleNewInputDate(e, state) {
-  // let tempDate = e.target.value.split("-");
-  // let euDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0];
   state.setTempTask({ ...state.tempTask, taskDate: e.target.value });
 }
 
@@ -77,78 +75,85 @@ function CreateNewTask() {
   let newTab;
 
   if (taskContext.addNewTask === false) {
-    return null;
+    newTab = "hideNew";
+  } else {
+    newTab = "showNew";
   }
 
   return (
     <div className={`createNewTask ${newTab}`}>
       <h2>Add new task</h2>
-      <div className="addNewTaskContainer">
-        <div className="taskName">
-          <label>
-            <b>Task Title</b>
-          </label>
-          <input
-            type="text"
-            className="nameInput"
-            onChange={(e) => handleNewInputName(e, taskContext)}
-          />
-        </div>
+      <div className="largerNewTaskContainer">
+        <div className="addNewTaskContainer">
+          <div className="newNameAndDescCont">
+            <div className="taskName">
+              <label>
+                <b>Task Title</b>
+              </label>
+              <input
+                type="text"
+                className="newNameInput"
+                onChange={(e) => handleNewInputName(e, taskContext)}
+              />
+            </div>
 
-        <div className="taskDesc">
-          <label>
-            <b>Task Description</b>
-          </label>
-          <textarea
-            className="detailsInput"
-            onChange={(e) => handleNewInputDesc(e, taskContext)}
-          />
-        </div>
+            <div className="taskDesc">
+              <label>
+                <b>Task Description</b>
+              </label>
+              <textarea
+                className="newDetailsInput"
+                onChange={(e) => handleNewInputDesc(e, taskContext)}
+              />
+            </div>
+          </div>
+          <div className="newDateAndPrioCont">
+            <div className="dueDate">
+              <label>
+                <b>Due date</b>
+              </label>
+              <input
+                type="date"
+                className="newDateInput"
+                onChange={(e) => handleNewInputDate(e, taskContext)}
+              />
+            </div>
 
-        <div className="dueDate">
-          <label>
-            <b>Due date</b>
-          </label>
-          <input
-            type="date"
-            className="dateInput"
-            onChange={(e) => handleNewInputDate(e, taskContext)}
-          />
-        </div>
+            <div className="taskPrio">
+              <label>
+                <b>Task Priority</b>
+              </label>
+              <select
+                className="newPrioInput"
+                onChange={(e) => handleDropdownPrioChange(e, taskContext)}
+                defaultValue="1"
+              >
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+              </select>
+            </div>
+          </div>
 
-        <div className="taskPrio">
-          <label>
-            <b>Task Priority</b>
-          </label>
-          <select
-            className="prioInput"
-            onChange={(e) => handleDropdownPrioChange(e, taskContext)}
-            value="1"
-          >
-            <option value="1">Low</option>
-            <option value="2">Medium</option>
-            <option value="3">High</option>
-          </select>
+          <div className="taskList">
+            <label>
+              <b>Assign task to a list</b>
+            </label>
+            <select
+              className="newListInput"
+              onChange={(e) => handleDropdownListChange(e, taskContext)}
+              defaultValue={taskContext.activeList.listId}
+              value={taskContext.activeList.listId}
+            >
+              <option>--Please select a list--</option>
+              {taskContext.currentList.map((item) => (
+                <option value={item.listName} key={item.listId}>
+                  {item.listName}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-
-        <div className="taskList">
-          <label>
-            <b>Assign task to a list</b>
-          </label>
-          <select
-            className="listInput"
-            onChange={(e) => handleDropdownListChange(e, taskContext)}
-            defaultValue={taskContext.activeList.listId}
-          >
-            <option>--Please select a list--</option>
-            {taskContext.currentList.map((item) => (
-              <option value={item.listName} key={item.listId}>
-                {item.listName}
-              </option>
-            ))}
-          </select>
-        </div>
-
         <div className="newTaskButtons">
           <button
             className="cancelNewTask"

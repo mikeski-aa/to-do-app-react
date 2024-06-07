@@ -18,7 +18,6 @@
   gap: 2rem;
 }
 
-.addNewTaskContainer,
 .editNewTaskContainer {
   display: flex;
   flex-direction: column;
@@ -36,7 +35,7 @@
 
 .newTaskButtons {
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
 }
 
 .cancelNewTask {
@@ -60,12 +59,13 @@
 }
 
 .showNew {
-  max-height: 20rem;
+  max-height: 13rem;
   opacity: 1;
+  max-width: 32rem;
 }
 
 .hideNew {
-  height: 0;
+  max-height: 0;
   opacity: 0;
   max-width: 0;
 }
@@ -73,12 +73,42 @@
 .createNewTask {
   background-color: #f7eedd;
   height: 25vh;
-  border-radius: 12px 0px 0px 12px;
+  border-radius: 12px 12px 12px 12px;
   padding-right: 10px;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.largerNewTaskContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addNewTaskContainer {
+  display: flex;
+  gap: 25px;
+}
+
+.taskName,
+.taskDesc {
+  display: flex;
+  flex-direction: column;
+}
+
+.newNameAndDescCont {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newDateAndPrioCont {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

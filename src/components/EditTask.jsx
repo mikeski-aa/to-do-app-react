@@ -46,6 +46,16 @@ function handleDeleteClick(taskContext) {
     (x) => x.taskId !== taskContext.tempTask.taskId
   );
   taskContext.setCurrentTasks(newStateArray);
+
+  taskContext.setTempTask({
+    taskId: "",
+    taskName: "",
+    taskDesc: "",
+    taskDate: "",
+    taskPrio: "1",
+    taskBelongTo: "",
+    taskDetailShow: false,
+  });
 }
 
 // function to handle saving back to the current state
@@ -75,8 +85,9 @@ function handleSaveClick(taskContext) {
     taskName: "",
     taskDesc: "",
     taskDate: "",
-    taskPrio: "",
+    taskPrio: "1",
     taskBelongTo: "",
+    taskDetailShow: false,
   });
 }
 
