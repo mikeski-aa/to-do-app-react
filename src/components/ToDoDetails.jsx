@@ -9,6 +9,10 @@ import { CreateNewTask } from "./NewTaskModal";
 // this cannot open if edit task is already opened!
 function newTaskHandler(state) {
   console.log(state.tempTask);
+  if (state.editTask === true) {
+    return alert("Finish editing your current task before adding a new one!");
+  }
+
   state.setTempTask({
     ...state.tempTask,
     taskName: "",
@@ -17,9 +21,6 @@ function newTaskHandler(state) {
     taskPrio: "1",
     taskId: uuidv4(),
   });
-  if (state.editTask === true) {
-    return alert("Finish editing your current task before adding a new one!");
-  }
 
   if (state.addNewTask === false) {
     state.setNewTask(true);
