@@ -8,7 +8,7 @@ import { WelcomeScreen } from "./components/WelcomeScreen";
 import { Today } from "./components/Today";
 import { Upcoming } from "./components/Upcoming";
 import { Overdue } from "./components/Overdue";
-import { resetAllDisplayStates } from "./components/utils";
+import { Settings } from "./components/Settings";
 import "./App.css";
 
 export const TaskContext = createContext();
@@ -151,9 +151,13 @@ function App() {
   // date state which can be toggled by user
   const [dateFormat, setDateFormat] = useState("EU");
 
+  // state for settings modal
+  const [showSettings, setShowSettings] = useState(false);
+
   return (
     <>
       <h1>To do app</h1>
+
       <TaskContext.Provider
         value={{
           tempTask,
@@ -176,8 +180,11 @@ function App() {
           setMainWindow,
           dateFormat,
           setDateFormat,
+          showSettings,
+          setShowSettings,
         }}
       >
+        <Settings />
         <div className="mainStuff">
           <Nav />
           <ToDoItems />
@@ -185,7 +192,6 @@ function App() {
           <Today />
           <Upcoming />
           <Overdue />
-          {/* <CreateNewTask /> */}
           <EditTask />
         </div>
       </TaskContext.Provider>

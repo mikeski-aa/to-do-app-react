@@ -35,6 +35,8 @@ function formatDate(inputDate, dateState) {
 
   if (dateState === "EU") {
     return (newDate = tempDate[2] + "-" + tempDate[1] + "-" + tempDate[0]);
+  } else {
+    return (newDate = tempDate[1] + "-" + tempDate[2] + "-" + tempDate[0]);
   }
 }
 

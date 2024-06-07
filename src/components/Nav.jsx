@@ -54,6 +54,10 @@ function Nav() {
     taskContext.setMainWindow("4");
   };
 
+  const handleSettingsOpen = () => {
+    taskContext.setShowSettings(true);
+  };
+
   return (
     <div className="navBar">
       <div className="mainNav">
@@ -110,7 +114,7 @@ function Nav() {
 
       <div className="about">
         <button>About app</button>
-        <button>Settings</button>
+        <button onClick={handleSettingsOpen}>Settings</button>
       </div>
     </div>
   );
