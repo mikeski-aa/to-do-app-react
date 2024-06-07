@@ -1,23 +1,28 @@
+function getPlusXdays(input) {
+  let date1 = new Date();
+  date1.setDate(date1.getDate() + input);
+
+  return date1.toISOString().split("T")[0];
+}
+
 // this function is there to set placeholder values without clogging up App.jsx
 
 function getPlaceholderTaskState() {
-  let todayDate = new Date();
-  todayDate = todayDate.toISOString().split("T")[0];
   const placeHolderTaskArray = [
     {
       taskId: "15351355",
-      taskName: "Placeholder Name",
-      taskDesc: "Placeholder Desc",
+      taskName: "Buy new car",
+      taskDesc: "Look through facebook marketplace",
       taskDate: "2024-01-01",
-      taskPrio: "3",
+      taskPrio: "1",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
       taskDetailShow: false,
     },
     {
       taskId: "153513535",
-      taskName: "Overdue task",
-      taskDesc: "Placeholder Desc",
+      taskName: "Example overdue task",
+      taskDesc: "I was meant to do this at the start of the year!",
       taskDate: "2024-01-01",
       taskPrio: "3",
       taskCompleted: false,
@@ -27,7 +32,7 @@ function getPlaceholderTaskState() {
     {
       taskId: "15351355433",
       taskName: "Another overdue task",
-      taskDesc: "Placeholder Desc",
+      taskDesc: "This one is from two years ago!",
       taskDate: "2022-12-13",
       taskPrio: "3",
       taskCompleted: false,
@@ -37,8 +42,8 @@ function getPlaceholderTaskState() {
     {
       taskId: "15351355416",
       taskName: "Today task",
-      taskDesc: "Placeholder Desc",
-      taskDate: todayDate,
+      taskDesc: "Buy groceries",
+      taskDate: getPlusXdays(0),
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
@@ -47,8 +52,8 @@ function getPlaceholderTaskState() {
     {
       taskId: "15351355412",
       taskName: "Today Task",
-      taskDesc: "Placeholder Desc",
-      taskDate: todayDate,
+      taskDesc: "Clean the house",
+      taskDate: getPlusXdays(0),
       taskPrio: "3",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
@@ -57,8 +62,8 @@ function getPlaceholderTaskState() {
     {
       taskId: "1535135541222",
       taskName: "Upcoming + 5",
-      taskDesc: "Placeholder Desc",
-      taskDate: "2024-06-10",
+      taskDesc: "This task is coming up in the next 5 days!",
+      taskDate: getPlusXdays(5),
       taskPrio: "1",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
@@ -66,9 +71,9 @@ function getPlaceholderTaskState() {
     },
     {
       taskId: "1535135541233",
-      taskName: "Upcoming + 4",
-      taskDesc: "Placeholder Desc",
-      taskDate: "2024-06-09",
+      taskName: "Upcoming + 3",
+      taskDesc: "This task is coming up in the next 3 days!",
+      taskDate: getPlusXdays(3),
       taskPrio: "2",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",
@@ -77,8 +82,8 @@ function getPlaceholderTaskState() {
     {
       taskId: "1535135541233390",
       taskName: "Upcoming + 7",
-      taskDesc: "Placeholder Desc",
-      taskDate: "2024-06-12",
+      taskDesc: "This task is coming up in the next 7 days!",
+      taskDate: getPlusXdays(7),
       taskPrio: "1",
       taskCompleted: false,
       taskBelongTo: "jhasd7861j",

@@ -1,4 +1,4 @@
-.settingsModal {
+.aboutAppModal {
   position: absolute;
   top: 0;
   width: 100vw;
@@ -9,10 +9,10 @@
   z-index: 10;
 }
 
-.settingsBox {
+.aboutAppBox {
   position: relative;
   top: 50%;
-  left: 50%;
+  left: 40%;
   background-color: #f7eedd;
   width: fit-content;
   display: flex;
@@ -22,16 +22,21 @@
   box-shadow: 10px 10px 10px grey;
 }
 
-.cancelSettingsButton {
-  --c: #e95a49;
+.githubIconAbout {
+  background-color: black;
+  border-color: transparent;
+  border-radius: 60%;
+  width: 10%;
+  transition: 0.5s ease-in;
 }
 
-.settingsBoxButtonContainer {
-  margin-top: 12px;
+.githubIconAbout:hover {
+  cursor: pointer;
+  transform: rotate(360deg) scale(1.25);
+}
+
+.myLink {
   display: flex;
-  gap: 20px;
-}
-
-.settingsHeading {
-  margin: 0;
+  align-items: center;
+  margin-bottom: 15px;
 }

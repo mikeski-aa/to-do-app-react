@@ -10,15 +10,12 @@ import { Upcoming } from "./components/Upcoming";
 import { Overdue } from "./components/Overdue";
 import { Settings } from "./components/Settings";
 import { getPlaceholderTaskState } from "./components/placeholderValues";
+import { AboutApp } from "./components/AboutApp";
 import "./App.css";
 
 export const TaskContext = createContext();
 
 function App() {
-  // for date setting for the initial tasks to be displayed
-
-  console.log(getPlaceholderTaskState());
-
   // placeholder list to show on startup and for testing
   // this is where all of the lists live with their associated IDs
   const [currentList, setCurrentList] = useState([
@@ -74,6 +71,9 @@ function App() {
   // state for settings modal
   const [showSettings, setShowSettings] = useState(false);
 
+  // state for showing about app info
+  const [aboutApp, setAboutApp] = useState(false);
+
   return (
     <>
       <h1 className="titleOfPage">To do app</h1>
@@ -102,9 +102,12 @@ function App() {
           setDateFormat,
           showSettings,
           setShowSettings,
+          aboutApp,
+          setAboutApp,
         }}
       >
         <Settings />
+        <AboutApp />
         <div className="mainStuff">
           <Nav />
           <ToDoItems />
