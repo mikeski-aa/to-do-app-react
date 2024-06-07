@@ -50,8 +50,6 @@ function Upcoming() {
     setUpcomingValue("7");
   };
 
-  console.log(getUpcomingTasks(taskContext, upcomingValue));
-
   return (
     <div className="upcomingTaskContainer">
       <h2>Upcoming tasks - next {upcomingValue} days</h2>
@@ -61,7 +59,7 @@ function Upcoming() {
         <button onClick={setUpcomingSeven}>Next 7 days</button>
       </div>
 
-      <div className="upcomingTasksMain">
+      <div className="upcomingTasksIncomplete">
         {getIncompleteTaskList(
           getUpcomingTasks(taskContext, upcomingValue)
         ).map((task) => (
@@ -78,7 +76,7 @@ function Upcoming() {
         ))}
       </div>
       <hr></hr>
-      <div className="upcomingTasksMain">
+      <div className="upcomingTasksComplete">
         {getCompleteTaskList(getUpcomingTasks(taskContext, upcomingValue)).map(
           (task) => (
             <DisplayTasks

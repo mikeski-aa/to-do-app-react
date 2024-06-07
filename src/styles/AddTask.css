@@ -43,3 +43,17 @@
 .cancelNewTask {
   --c: #e95a49;
 }
+
+.hideEdit {
+  opacity: 0;
+  max-width: 0;
+}
+
+.showEdit {
+  max-width: 20rem;
+  opacity: 1;
+}
+
+.editTask {
+  transition: 0.5s cubic-bezier(1, 1, 1, 1);
+}

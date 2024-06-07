@@ -52,6 +52,7 @@ function Overdue() {
             taskPrio={task.taskPrio}
             taskId={task.taskId}
             taskCompleted={task.taskCompleted}
+            tasktaskDetailShow={task.taskDetailShow}
             key={task.taskId}
           />
         ))}
@@ -66,6 +67,7 @@ function Overdue() {
             taskPrio={task.taskPrio}
             taskId={task.taskId}
             taskCompleted={task.taskCompleted}
+            taskDetailShow={task.taskDetailShow}
             key={task.taskId}
           />
         ))}

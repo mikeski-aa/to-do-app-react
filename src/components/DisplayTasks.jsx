@@ -90,6 +90,7 @@ function DisplayTasks(props) {
 
   if (props.taskDetailShow === true) {
     detailShow = "detailShow";
+    console.log("detailShow working correctly and assigned");
   } else {
     detailShow = "detailHide";
   }

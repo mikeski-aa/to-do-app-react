@@ -85,13 +85,16 @@ function handleSaveClick(taskContext) {
 
 function EditTask() {
   const taskContext = useContext(TaskContext);
+  let editTab;
 
   if (taskContext.editTask === false) {
-    return null;
+    editTab = "hideEdit";
+  } else {
+    editTab = "showEdit";
   }
 
   return (
-    <div className="editTask">
+    <div className={`editTask ${editTab}`}>
       <h2>Edit task</h2>
       <div className="editNewTaskContainer">
         <div className="taskName">
